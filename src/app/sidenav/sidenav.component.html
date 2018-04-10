@@ -1,0 +1,32 @@
+<mat-sidenav-container class="mat-sidenav-container">
+  <mat-sidenav-content>
+    <div class="component-viewer-sidenav">
+      <div class="component-viewer-sidenav-content">
+        <nav *ngFor="let nav of navs; let i = index;">
+          <button (click)="vote(i,nav);" > {{nav.name}}
+            <mat-icon class="mat-icon material-icons"> keyboard_arrow_down</mat-icon>
+          </button>
+          <div *ngIf = "hideme[i]">
+            <ul *ngFor="let nav of sidenavlistitem">  {{nav.name}}   </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+
+<!-- <nav>
+    <button>Board
+      <mat-icon>keyboard_arrow_down</mat-icon>
+    </button>
+    <button>Issues
+      <mat-icon>keyboard_arrow_down</mat-icon>
+    </button>
+    <ul>
+      <li>issue one</li>
+    </ul>
+  </nav>
+  <p>project works</p>
+   -->
