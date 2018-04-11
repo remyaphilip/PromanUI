@@ -39,7 +39,6 @@ import { SidenavComponent } from './sidenav/sidenav.component';
     CardComponent,
     ProjectComponent,
     IssueComponent,
-    SidenavComponent
   ],
   imports: [
     BrowserModule,
@@ -63,6 +62,6 @@ import { SidenavComponent } from './sidenav/sidenav.component';
     ])
   ],
   providers: [LoginService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent,SidenavComponent]
 })
 export class AppModule { }

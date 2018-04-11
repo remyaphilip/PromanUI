@@ -16,8 +16,20 @@
   max-height: 75vh;
   overflow: auto;
 }
+mat-sidenav{
+  visibility: visible;
+}
+mat-sidenav .mat-sidenav{
+position: fixed;
+top: 64px;
+bottom: 0;
+left: 0;
+padding: 0;
+min-width: 260px;
+visibility: visible;
+}
 
-.component-viewer-sidenav .component-viewer-sidenav-content button {
+.component-viewer-sidenav .component-viewer-sidenav-content .component-viewer-sidenav-level button  {
   border: none;
   padding: 10px 15px;
   font-weight: 700;
@@ -47,7 +59,7 @@ ul {
   background: none;
 }
 
-.component-viewer-sidenav .component-viewer-sidenav-content button .mat-icon {
+.component-viewer-sidenav .component-viewer-sidenav-content button .mat-icon  {
   position: absolute;
   right: 5px;
   font-size: 18px;
@@ -84,10 +96,12 @@ li {
   text-align: -webkit-match-parent;
 }
 
-.component-viewer-sidenav-content a {
+.component-viewer-sidenav-content  {
   display: block;
   text-decoration: none;
 }
+
+
 
 nav {
   display: block;

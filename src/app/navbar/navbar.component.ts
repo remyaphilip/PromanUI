@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { link } from './link';
+//import { link } from './link';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 
@@ -10,13 +10,13 @@ import { MatIconRegistry } from '@angular/material';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  navLinks = [
-    new link('Home', '')
-    , new link('Project', 'project')
-    , new link('Issue', 'issue')
-    , new link('Group', 'group')
-    ,new link('invite', 'invite')
-  ];
+  // navLinks = [
+  //   new link('Home', '')
+  //   , new link('Project', 'project')
+  //   , new link('Issue', 'issue')
+  //   , new link('Group', 'group')
+  //   ,new link('invite', 'invite')
+  // ];
   constructor() {
     
 

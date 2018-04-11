@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
 import { Nav } from './nav';
+import { link } from '../navbar/link'
 @Component({
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
@@ -7,6 +8,15 @@ import { Nav } from './nav';
 })
 
 export class SidenavComponent implements OnInit {
+
+  navLinks = [
+    new link('Home', '')
+    , new link('Project', 'project')
+    , new link('Issue', 'issue')
+    , new link('Group', 'group')
+    ,new link('invite', 'invite')
+  ];
+
 
   @Input() navs: Nav[] = [];
   @Input() sidenavlistitem: Nav[] = [];
