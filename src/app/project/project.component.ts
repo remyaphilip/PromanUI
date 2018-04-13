@@ -34,8 +34,8 @@ export class ProjectComponent implements OnInit,AfterViewInit {
   constructor(public _loginService: LoginService) { }
 
   ngOnInit() {
-    this.getProject(2);
-    console.log(this.sidenavvalue);
+    //this.getProject(2);
+    //console.log(this.sidenavvalue);
   }
 
   getProject(userId: number) {

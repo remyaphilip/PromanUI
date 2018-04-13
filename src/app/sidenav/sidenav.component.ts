@@ -1,10 +1,11 @@
-import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Input, Output} from '@angular/core';
 import { Nav } from './nav';
 import { link } from '../navbar/link'
 @Component({
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
-  styleUrls: ['./sidenav.component.scss']
+  styleUrls: ['./sidenav.component.scss'],
+  
 })
 
 export class SidenavComponent implements OnInit {

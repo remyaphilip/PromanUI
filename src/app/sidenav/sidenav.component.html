@@ -1,58 +1,23 @@
-<mat-sidenav-container class="mat-sidenav-container">
-  <mat-sidenav opened mode = "side">
-    <div class="component-viewer-sidenav">
-      <div class="component-viewer-sidenav-content">
-        <div class="component-viewer-sidenav-level">
-          <nav>
-            <button>
-              <a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Dashboard</a>
-             
-            </button>
-            <button #project>
-              <a routerLink="project" routerLinkActive="active">Project</a>
-              <mat-icon class="mat-icon material-icons"> keyboard_arrow_down</mat-icon>
-            </button>
-            <button>
-              <a routerLink="issue" routerLinkActive="active">Issue</a>
-              <mat-icon class="mat-icon material-icons"> keyboard_arrow_down</mat-icon>
-            </button>
-            <button>
-              <a routerLink="user" routerLinkActive="active">Users</a>
-              <mat-icon class="mat-icon material-icons"> keyboard_arrow_down</mat-icon>
-            </button>
-
-            <div class="component-viewer-sidenav-level">
-              <nav *ngFor="let nav of navs; let i = index;">
-                <button (click)="vote(i,nav);"> {{nav.name}}
-                  <mat-icon class="mat-icon material-icons"> keyboard_arrow_down</mat-icon>
-                </button>
-                <div *ngIf="hideme[i]">
-                  <ul *ngFor="let nav of sidenavlistitem"> {{nav.name}} </ul>
-                </div>
-              </nav>
-            </div>
-          </nav>
-        </div>
-      </div>
-    </div>
-  </mat-sidenav>
-  <mat-sidenav-content>
-
-  </mat-sidenav-content>
-</mat-sidenav-container>
-
-
-
-<!-- <nav>
-    <button>Board
-      <mat-icon>keyboard_arrow_down</mat-icon>
-    </button>
-    <button>Issues
-      <mat-icon>keyboard_arrow_down</mat-icon>
-    </button>
-    <ul>
-      <li>issue one</li>
-    </ul>
-  </nav>
-  <p>project works</p>
-   -->
+<div class="sidenavcontainer">
+  <div class="sidenavbar">
+    <nav>
+      <ul>
+        <li>
+          <a routerLink="" routerLinkActive="active">Dashboard</a>
+        </li>
+        <li>
+          <a routerLink="project" routerLinkActive="active">Project</a>
+        </li>
+        <li>
+          <a routerLink="issue" routerLinkActive="active">Issue</a>
+        </li>
+        <li>
+          <a routerLink="user" routerLinkActive="active">Users</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <div class="sidenavcontent">
+    <router-outlet></router-outlet>
+  </div>
+</div>

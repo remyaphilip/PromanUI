@@ -1,108 +1,39 @@
-.mat-sidenav-container {
-  -webkit-box-direction: normal;
-  width: 270px;
-  max-height: 1098;
-  top: 25px;
-}
 
-.component-viewer-sidenav {
-  position: sticky;
-  top: 25px;
-}
+.sidenavbar{
+  width: 260px;
+  max-height: 1000px;
+  background-color: #f5f5f5;
 
-.component-viewer-sidenav .component-viewer-sidenav-content {
-  margin: 25px;
-  width: 220px;
-  max-height: 75vh;
-  overflow: auto;
 }
-mat-sidenav{
-  visibility: visible;
-}
-mat-sidenav .mat-sidenav{
-position: fixed;
-top: 64px;
-bottom: 0;
-left: 0;
-padding: 0;
-min-width: 260px;
-visibility: visible;
-}
-
-.component-viewer-sidenav .component-viewer-sidenav-content .component-viewer-sidenav-level button  {
-  border: none;
-  padding: 10px 15px;
-  font-weight: 700;
-  line-height: 16px;
-  margin: 0;
-  font-size: 13px;
-  cursor: pointer;
-  position: relative;
-  display: block;
-  width: 100%;
-  text-align: left;
-  background: none;
-}
-
-ul {
-  border: none;
-  padding: 10px 15px;
-  font-weight: 700;
-  line-height: 16px;
-  margin: 0;
-  font-size: 13px;
-  cursor: pointer;
-  position: relative;
-  display: block;
-  width: 100%;
-  text-align: left;
-  background: none;
-}
-
-.component-viewer-sidenav .component-viewer-sidenav-content button .mat-icon  {
-  position: absolute;
-  right: 5px;
-  font-size: 18px;
-}
-
-.mat-icon {
-  background-repeat: no-repeat;
-  display: inline-block;
-  fill: currentColor;
-  height: 24px;
-  width: 24px;
-}
-
-.component-viewer-sidenav-content button {
-  color: rgba(0, 0, 0, .5);
-}
-
-.component-viewer-sidenav .component-viewer-sidenav-content ul {
-  list-style-type: none;
-  margin: -5px 0 5px 0;
-  padding: 0;
-  overflow: hidden;
-}
-
-.component-viewer-sidenav .component-viewer-sidenav-content li {
-  font-size: 13px;
-  line-height: 16px;
-  margin: 0;
-  padding: 5px 15px 5px 20px;
-}
-
-li {
-  display: list-item;
-  text-align: -webkit-match-parent;
-}
-
-.component-viewer-sidenav-content  {
-  display: block;
+.sidenavbar a{
   text-decoration: none;
+  padding: 10px;
+  padding-right: 100px;
 }
 
-
-
-nav {
+.sidenavbar ul li{
+  list-style-type: none;
   display: block;
+  padding: 15px;
+  border-bottom: 1px solid #CCC;
 }
+
+.sidenavbar ul li:hover{
+  background: #cdc7c7a3;
+  transition: linear all .40s;
+}
+
+.selected a{
+  color: #1976d2;
+}
+
+.sidenavcontent{
+  position: relative;
+  margin-left: 275px;
+  margin-right: 0px;
+  width:700px;
+  padding-top: 0px;
+  
+}
+
+

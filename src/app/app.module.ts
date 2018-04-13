@@ -39,6 +39,7 @@ import { SidenavComponent } from './sidenav/sidenav.component';
     CardComponent,
     ProjectComponent,
     IssueComponent,
+    SidenavComponent
   ],
   imports: [
     BrowserModule,
