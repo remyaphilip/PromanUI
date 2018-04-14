@@ -23,7 +23,6 @@ export class SidenavComponent implements OnInit {
 
   projectList: Nav[] = [];
   project: Project[];
-  projectName: string[] = [];
   projectListStat: boolean = false;
 
 
@@ -68,11 +67,10 @@ export class SidenavComponent implements OnInit {
         this.project.forEach(
           (item: Project, index) => {
             this.projectList.push({ name: item.name });
-            this.projectName.push(item.name);
           }
         );
       });
-      console.log(this.projectName);
+     
   }
 
 
