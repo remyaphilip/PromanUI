@@ -28,6 +28,7 @@ import { ProjectComponent } from './project/project.component';
 import { IssueComponent } from './issue/issue.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

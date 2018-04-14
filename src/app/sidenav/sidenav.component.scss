@@ -30,15 +30,19 @@
       transition: linear all .40s;
     }
     &:active {
-      background: #0095FF;
       color: white;
       transition: linear all .40s;
     }
   }
-  .projectlist{
+  .projectlist {
     color: white;
     padding: 20px;
     border-bottom: none;
+    // a {
+    //   display: block;
+    //   padding: 15px;
+    //   border-bottom: 1px solid #ccc;
+    // }
   }
 }
 

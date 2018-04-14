@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { Nav } from './nav';
 import { LoginService } from "../login.service";
 import { Project } from "../interface/project";
@@ -20,39 +21,18 @@ export class SidenavComponent implements OnInit {
     , new link('invite', 'invite')
   ];
 
-
   projectList: Nav[] = [];
   project: Project[];
   projectListStat: boolean = false;
   prevProjectListStat: boolean = false;
 
-  // @Input() navs: Nav[] = [];
-  // @Input() sidenavlistitem: Nav[] = [];
-  // @Output() onClick = new EventEmitter<boolean>();
-  // hideme: Array<boolean> = [false];
-  // curtrgt: string;
 
-
-
-  // vote(i: number, curtargt: string) {
-  //   this.curtrgt = curtargt
-  //   this.hideme = [false];
-  //   console.log(this.hideme);
-  //   this.hideme[i] = true;
-  //   console.log(this.hideme, curtargt);
-  //   this.onClick.emit(true);
-
-  // }
-
-
-  constructor(public _loginService: LoginService) {
+  constructor(public _loginService: LoginService, private router: Router) {
     this.getProject(2);
-    //  console.log(this.projectList);
   }
 
   ngOnInit() {
 
-    //console.log(this.hideme);
   }
 
   onClick() {
@@ -60,10 +40,7 @@ export class SidenavComponent implements OnInit {
       this.projectListStat = false;
     }
     else
-    this.projectListStat = true;
-
-
-
+      this.projectListStat = true;
   }
 
   getProject(userId: number) {
@@ -79,8 +56,9 @@ export class SidenavComponent implements OnInit {
 
   }
 
-
+  routerLinkProject(projectName: string) {
+    console.log(projectName);
+    this.router.navigate['/project'];
+  }
 
 }
-
-
