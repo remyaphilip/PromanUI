@@ -8,7 +8,8 @@
         <li class="project"  (click)="onClick()">
           <a routerLink="project" routerLinkActive="active">Project</a>
           <img src="./assets/img/angle-arrow-down.svg">
-          <ul *ngIf="projectListStat">
+          </li>
+          <ul class="projectlist" *ngIf="projectListStat">
             <li *ngFor="let plist of projectList;">{{plist.name}}</li>
           </ul>
           <li>

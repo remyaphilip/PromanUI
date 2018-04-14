@@ -24,7 +24,7 @@ export class SidenavComponent implements OnInit {
   projectList: Nav[] = [];
   project: Project[];
   projectListStat: boolean = false;
-
+  prevProjectListStat: boolean = false;
 
   // @Input() navs: Nav[] = [];
   // @Input() sidenavlistitem: Nav[] = [];
@@ -47,20 +47,26 @@ export class SidenavComponent implements OnInit {
 
   constructor(public _loginService: LoginService) {
     this.getProject(2);
-  //  console.log(this.projectList);
+    //  console.log(this.projectList);
   }
 
   ngOnInit() {
-    
+
     //console.log(this.hideme);
   }
 
-  onClick(){
+  onClick() {
+    if (this.projectListStat == true) {
+      this.projectListStat = false;
+    }
+    else
     this.projectListStat = true;
-    
+
+
+
   }
 
- getProject(userId: number) {
+  getProject(userId: number) {
     this._loginService.getProjectPerUser(userId)
       .subscribe(response => {
         this.project = <Project[]>response;
@@ -70,7 +76,7 @@ export class SidenavComponent implements OnInit {
           }
         );
       });
-     
+
   }
 
 
