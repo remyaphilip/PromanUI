@@ -59,6 +59,7 @@ import { SidenavComponent } from './sidenav/sidenav.component';
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'login', component: LoginComponent },
+      { path: 'project/:id', component: ProjectComponent},
       { path: 'project', component: ProjectComponent},
       { path: 'issue', component: IssueComponent}
     ])

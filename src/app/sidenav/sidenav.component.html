@@ -10,8 +10,7 @@
           <img src="./assets/img/angle-arrow-down.svg">
         </li>
         <div class="projectlist" *ngIf="projectListStat">
-          <li *ngFor="let plist of projectList;let i = index;" (click)="routerLinkProject(projectList[i])">
-            {{plist.name}}</li>
+          <a *ngFor="let plist of projectList;" [routerLink]="[ '/project', plist.name ]">{{plist.name}}</a>
         </div>
         <li>
           <a routerLink="issue" routerLinkActive="active">Issue</a>
@@ -19,9 +18,6 @@
         <li>
           <a routerLink="user" routerLinkActive="active">Users</a>
         </li>
-        <li (click)="routerLinkProject('remya')">
-            <a >Users</a>
-          </li>
       </ul>
     </nav>
   </div>
