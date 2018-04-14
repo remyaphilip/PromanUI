@@ -5,15 +5,18 @@
         <li>
           <a routerLink="" routerLinkActive="active">Dashboard</a>
         </li>
-        <li>
+        <li (click)="onClick()">
           <a routerLink="project" routerLinkActive="active">Project</a>
-        </li>
-        <li>
-          <a routerLink="issue" routerLinkActive="active">Issue</a>
-        </li>
-        <li>
-          <a routerLink="user" routerLinkActive="active">Users</a>
-        </li>
+          <img src="./assets/img/angle-arrow-down.svg">
+          <ul *ngIf="projectListStat">
+            <li *ngFor="let plist of projectName"></li>
+          </ul>
+          <li>
+            <a routerLink="issue" routerLinkActive="active">Issue</a>
+          </li>
+          <li>
+            <a routerLink="user" routerLinkActive="active">Users</a>
+          </li>
       </ul>
     </nav>
   </div>
