@@ -10,7 +10,8 @@
           <img src="./assets/img/angle-arrow-down.svg">
         </li>
         <div class="projectlist" *ngIf="projectListStat">
-          <a *ngFor="let plist of projectList;" [routerLink]="[ '/project', plist.name ]">{{plist.name}}</a>
+       <!--   <a *ngFor="let plist of projectList;" [routerLink]="[ '/project', plist.name ]">{{plist.name}}</a> -->
+           <a *ngFor="let plist of project;" [routerLink]="[ '/project', plist ]">{{plist.name}}</a>
         </div>
         <li>
           <a routerLink="issue" routerLinkActive="active">Issue</a>

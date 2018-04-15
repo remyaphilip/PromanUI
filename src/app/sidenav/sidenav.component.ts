@@ -2,7 +2,7 @@ import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Nav } from './nav';
 import { LoginService } from "../login.service";
-import { Project } from "../interface/project";
+import { Project } from '../interface/project';
 import { link } from '../navbar/link'
 @Component({
   selector: 'app-sidenav',
@@ -22,13 +22,14 @@ export class SidenavComponent implements OnInit {
   ];
 
   projectList: Nav[] = [];
-  project: Project[];
+  project: Project[] = [];
   projectListStat: boolean = false;
   prevProjectListStat: boolean = false;
 
 
   constructor(public _loginService: LoginService, private router: Router) {
     this.getProject(2);
+    
   }
 
   ngOnInit() {
@@ -41,24 +42,26 @@ export class SidenavComponent implements OnInit {
     }
     else
       this.projectListStat = true;
+    
   }
 
   getProject(userId: number) {
     this._loginService.getProjectPerUser(userId)
       .subscribe(response => {
         this.project = <Project[]>response;
-        this.project.forEach(
-          (item: Project, index) => {
-            this.projectList.push({ name: item.name });
-          }
-        );
+       
+        // this.project.forEach(
+        //   (item: Project, index) => {
+        //     this.projectList.push({ name: item.name });
+        //   }
+        // );
       });
 
   }
 
-  routerLinkProject(projectName: string) {
-    console.log(projectName);
-    this.router.navigate['/project'];
-  }
+  // routerLinkProject(projectName: string) {
+  //   console.log(projectName);
+  //   this.router.navigate['/project'];
+  // }
 
 }

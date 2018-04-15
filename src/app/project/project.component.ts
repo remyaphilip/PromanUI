@@ -1,11 +1,12 @@
-import { Component, OnInit, Input,AfterViewInit,ViewChild } from '@angular/core';
-import { LoginService } from '../login.service';
-import { UserHasProjectId } from '../interface/userhasprojectid';
+import { Component, OnInit, Input, ViewChild, OnDestroy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
 import { Nav } from '../sidenav/nav';
 import { Project } from '../interface/project';
-import { Button } from 'protractor';
-import { markParentViewsForCheck } from '@angular/core/src/view/util';
-import { SidenavComponent } from '../sidenav/sidenav.component';
+import { Board } from '../interface/board';
+import { LoginService } from '../login.service';
+
+
 
 @Component({
   selector: 'app-project',
@@ -13,53 +14,37 @@ import { SidenavComponent } from '../sidenav/sidenav.component';
   styleUrls: ['./project.component.scss']
 })
 
-export class ProjectComponent implements OnInit,AfterViewInit {
+export class ProjectComponent implements OnInit {
 
-  @ViewChild(SidenavComponent)
-  private sidenavComponent: SidenavComponent;
-
-  ngAfterViewInit() {
-    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
-    //Add 'implements AfterViewInit' to the class.
-    //this.sidenavprjt = this.sidenavComponent.curtrgt;
-  }
-  userId;
-  project: Project[];
-  navs: Nav[] = [];
-  sidenavlistitem: Nav[] = [];
-  sidenavvalue: string;
-  sidenavprjt: string;
-  
-
-  constructor(public _loginService: LoginService) { }
+  constructor(private route: ActivatedRoute, private _loginService: LoginService) { }
 
   ngOnInit() {
-    //this.getProject(2);
-    //console.log(this.sidenavvalue);
-  }
+    this.getParams();
+    this.getBoard(this.project.projectId);
 
-  getProject(userId: number) {
-    this._loginService.getProjectPerUser(userId)
+  }
+  ngOnDestroy(): void {
+   
+    this.temp.unsubscribe();
+    this.temp1.unsubscribe();
+  }
+  project = <Project>{};
+  temp: any;
+  temp1: any;
+  board = <Board>{};
+
+  getParams() {
+    this.temp = this.route.params
       .subscribe(response => {
-        this.project = response as Project[];
-        this.project.forEach(
-          (item: Project, index) => {
-            this.navs.push({ name: item.name });
-          }
-        );
+        this.project = response as Project;
       });
   }
 
-  onClick(event: boolean) {
-    console.log(event);
-    if (event === true ) {
-      
-      this.sidenavlistitem.push({ name: "Board" },
-                                { name: "Issues" })
-      //console.log(this.sidenavlistitem);
-                                                            }
+  getBoard(projectId: number) {
+    this.temp1 = this._loginService.getBoard(projectId).subscribe(data => {
+      this.board = data as Board;
+      console.log(this.board);
+    })
   }
-
-
 
 }
