@@ -21,7 +21,7 @@ export class ProjectComponent implements OnInit {
   ngOnInit() {
     this.getParams();
     this.getBoard(this.project.projectId);
-
+    console.log(this.selectBoard,this.selectProjectIssue);
   }
   ngOnDestroy(): void {
    
@@ -32,6 +32,8 @@ export class ProjectComponent implements OnInit {
   temp: any;
   temp1: any;
   board = <Board>{};
+  selectBoard:boolean = true;
+  selectProjectIssue:boolean = false;
 
   getParams() {
     this.temp = this.route.params
@@ -43,7 +45,6 @@ export class ProjectComponent implements OnInit {
   getBoard(projectId: number) {
     this.temp1 = this._loginService.getBoard(projectId).subscribe(data => {
       this.board = data as Board;
-      console.log(this.board);
     })
   }
 

@@ -2,7 +2,13 @@
  (onClick)="onClick($event)"
  [sidenavlistitem]=sidenavlistitem
   #sidenav></app-sidenav> -->
-  <div class="projectcontent">
-    <p>project
-    </p>
-  </div>
+<ul class = "projectTab">
+  <li><a>Board</a></li>
+  <li><a>Issue</a></li>
+</ul>
+<div *ngIf = "selectBoard">
+  <app-board></app-board>
+</div>
+<div *ngIf = "selectProjectIssue">
+  <app-projectissue></app-projectissue>
+</div>

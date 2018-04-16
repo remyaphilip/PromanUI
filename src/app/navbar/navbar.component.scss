@@ -5,8 +5,9 @@
 }
 .accounticon{
     font-size: 35px;
-    color: rgba(109, 108, 106, 0.658);
+    color: whitesmoke;
     vertical-align: middle;
+    margin-bottom: 2px;
 }
 .accountbox{
   flex-direction: row;
@@ -21,4 +22,9 @@
   
   text-align: end;
   display: inline-block;
+}
+
+.mat-toolbar{
+  background: #1976D2;
+  color: white;
 }

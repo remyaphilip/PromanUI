@@ -27,6 +27,8 @@ import { CardComponent } from './card/card.component';
 import { ProjectComponent } from './project/project.component';
 import { IssueComponent } from './issue/issue.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
+import { BoardComponent } from './board/board.component';
+import { ProjectissueComponent } from './projectissue/projectissue.component';
 
 
 @NgModule({
@@ -40,7 +42,9 @@ import { SidenavComponent } from './sidenav/sidenav.component';
     CardComponent,
     ProjectComponent,
     IssueComponent,
-    SidenavComponent
+    SidenavComponent,
+    BoardComponent,
+    ProjectissueComponent
   ],
   imports: [
     BrowserModule,
