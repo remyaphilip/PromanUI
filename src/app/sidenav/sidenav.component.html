@@ -7,14 +7,15 @@
         </li>
         <li class="project" (click)="onClick()">
           <a>Project</a>
-          <img src="./assets/img/angle-arrow-down.svg">
+          <img src="./assets/img/sort-down.svg">
         </li>
         <div class="projectlist" *ngIf="projectListStat">
           <!--   <a *ngFor="let plist of projectList;" [routerLink]="[ '/project', plist.name ]">{{plist.name}}</a> -->
           <a *ngFor="let plist of project;" [routerLink]="[ '/project', plist ]">{{plist.name}}</a>
         </div>
         <li>
-          <a routerLink="issue" routerLinkActive="active">Issue</a>
+          <!-- <a routerLink="issue" routerLinkActive="active" >Issue</a> -->
+           <a [routerLink]="['/issue', userId ]" routerLinkActive="active" >Issue</a>
         </li>
         <li>
           <a routerLink="user" routerLinkActive="active">Users</a>

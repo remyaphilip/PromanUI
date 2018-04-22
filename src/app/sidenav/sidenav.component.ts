@@ -25,6 +25,7 @@ export class SidenavComponent implements OnInit {
   project: Project[] = [];
   projectListStat: boolean = false;
   prevProjectListStat: boolean = false;
+  userId: number = 2;
 
 
   constructor(public _loginService: LoginService, private router: Router) {
@@ -49,6 +50,7 @@ export class SidenavComponent implements OnInit {
     this._loginService.getProjectPerUser(userId)
       .subscribe(response => {
         this.project = <Project[]>response;
+        console.log(this.project);
        
         // this.project.forEach(
         //   (item: Project, index) => {

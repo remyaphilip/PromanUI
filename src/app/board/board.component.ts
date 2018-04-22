@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Board } from '../interface/board';
+import { LoginService } from '../login.service';
+import { List } from '../interface/list';
 
 @Component({
   selector: 'app-board',
@@ -7,9 +10,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BoardComponent implements OnInit {
 
-  constructor() { }
+  @Input() lists: List[] =[];
+ 
 
   ngOnInit() {
-  }
 
+  }
 }

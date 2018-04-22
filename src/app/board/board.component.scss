@@ -1,0 +1,22 @@
+.list{
+  margin: 10px;
+  margin-left: 0;
+  height: 30px;
+ width: 100%;
+  ul{
+    
+    
+    list-style: none;
+  }
+  li{
+    border: 1px;
+    margin-right: 10px;
+    width: 350px;
+    float: left;
+    background-color: #FAFAFA;
+    padding: 10px;
+    box-shadow: 2px;
+    
+
+  }
+}

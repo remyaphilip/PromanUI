@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Issue } from '../interface/issue';
 
 @Component({
   selector: 'app-projectissue',
@@ -7,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectissueComponent implements OnInit {
 
+  @Input() issueColumn: string[];
+  @Input() issue: Issue[];
   constructor() { }
 
   ngOnInit() {

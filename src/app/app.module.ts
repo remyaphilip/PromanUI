@@ -65,6 +65,7 @@ import { ProjectissueComponent } from './projectissue/projectissue.component';
       { path: 'login', component: LoginComponent },
       { path: 'project/:id', component: ProjectComponent},
       { path: 'project', component: ProjectComponent},
+      { path: 'issue/:userId',component: IssueComponent},
       { path: 'issue', component: IssueComponent}
     ])
   ],
