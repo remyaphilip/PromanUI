@@ -23,7 +23,7 @@ export class ProjectItemComponent implements OnInit {
   issueColumn: string[] = [];
   board = <Board>{};
   menuItem = 0;
-  projectId: number;
+  projectId: any;
 
   constructor(private _loginService:LoginService,private route: ActivatedRoute) { }
 
