@@ -25,7 +25,8 @@ export class ProjectComponent {
 
   }
   ngOnInit(): void {
-    this.getProject(2);
+    this._loginService.userId = 2;
+    this.getProject(this._loginService.userId);
     // this.getParams();
 
   }
@@ -44,8 +45,8 @@ export class ProjectComponent {
   }
 
   setProject(projectId: number) {
-    
-    this.router.navigate(['project-item', projectId]);
+    this._loginService.projectId = projectId;
+    this.router.navigate(['project-item']);
   }
 
 

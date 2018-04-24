@@ -13,7 +13,7 @@ import { Issue } from '../interface/issue';
   styleUrls: ['./project-item.component.scss']
 })
 export class ProjectItemComponent implements OnInit {
-  
+
   project: Project;
   temp: any;
   temp1: any;
@@ -23,22 +23,22 @@ export class ProjectItemComponent implements OnInit {
   issueColumn: string[] = [];
   board = <Board>{};
   menuItem = 0;
-  projectId: any;
 
-  constructor(private _loginService:LoginService,private route: ActivatedRoute) { }
+
+  constructor(private _loginService: LoginService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    
+    this.getBoard(this._loginService.projectId);
   }
-  getParams() {
-    this.temp = this.route.paramMap
-      .subscribe(response => {
-        this.projectId = response  ;
-        this.getBoard(this.project.projectId);
+  // getParams() {
+  //   this.temp = this.route.paramMap
+  //     .subscribe(response => {
+  //       this.projectId = response  ;
+  //       this.getBoard(this.project.projectId);
 
-      });
+  //     });
 
-  }
+  // }
 
   getBoard(projectId: number) {
     this.temp1 = this._loginService.getBoard(projectId).subscribe(data => {
@@ -57,9 +57,9 @@ export class ProjectItemComponent implements OnInit {
 
   getIssue() {
     this.menuItem = 1;
-    this.temp2 = this._loginService.getIssue(this.project.projectId).subscribe(response => {
+    this.temp2 = this._loginService.getIssue(this._loginService.projectId).subscribe(response => {
       this.issue = <Issue[]>response;
-      console.log(this.project.projectId, 'test', this.issue);
+      // console.log(this.project.projectId, 'test', this.issue);
     })
     this.issueColumn = this.getIssueColumn();
 

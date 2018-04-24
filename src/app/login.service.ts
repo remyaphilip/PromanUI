@@ -12,6 +12,8 @@ import { environment } from '../environments/environment';
 @Injectable()
 export class LoginService {
   private base = environment._baseUrl;
+  userId: number;
+  projectId: number;
 
   private project: Project[];
   constructor(private http: HttpClient) { }

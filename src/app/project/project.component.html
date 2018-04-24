@@ -17,7 +17,7 @@
   <tr>
     <th *ngFor="let col of projectColumn">{{col}}</th>
   </tr>
-  <tr *ngFor="let pro of projectList; let i = index" (click)="setProject(pro)">
+  <tr *ngFor="let pro of projectList; let i = index" (click)="setProject(pro.projectId)">
     <td *ngFor="let col of projectColumn">{{pro[col]}}</td>
   </tr>
 </table>

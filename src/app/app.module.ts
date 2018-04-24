@@ -68,7 +68,7 @@ import { SharedService } from './shared.service';
       { path: '', component: HomeComponent },
       { path: 'login', component: LoginComponent },
       { path: 'project', component: ProjectComponent },
-      { path: 'project-item/:id', component: ProjectItemComponent },
+      { path: 'project-item', component: ProjectItemComponent },
       { path: 'issue/:userId', component: IssueComponent },
       { path: 'issue', component: IssueComponent }
     ])
