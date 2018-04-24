@@ -1,0 +1,32 @@
+div {
+    ul {
+      list-style-type: none;
+      margin: 0px;
+      padding: 0px;
+      overflow: hidden;
+      background-color: rgb(201, 201, 201);
+      position: -webkit-sticky;
+      top: 0;
+      li {
+        float: left;
+      }
+      li a {
+        display: block;
+        color: #333;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        &:hover {
+          background-color: #aaa5a5a3;
+        }
+      }
+    }
+    img {
+      width: 25px;
+      height: 25px;
+      position: absolute;
+      left: 1258px;
+      top: 15%;
+      color: whitesmoke;
+    }
+  }

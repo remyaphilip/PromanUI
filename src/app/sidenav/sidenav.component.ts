@@ -29,7 +29,7 @@ export class SidenavComponent implements OnInit {
 
 
   constructor(public _loginService: LoginService, private router: Router) {
-    this.getProject(2);
+    
     
   }
 
@@ -46,20 +46,7 @@ export class SidenavComponent implements OnInit {
     
   }
 
-  getProject(userId: number) {
-    this._loginService.getProjectPerUser(userId)
-      .subscribe(response => {
-        this.project = <Project[]>response;
-        console.log(this.project);
-       
-        // this.project.forEach(
-        //   (item: Project, index) => {
-        //     this.projectList.push({ name: item.name });
-        //   }
-        // );
-      });
 
-  }
 
   // routerLinkProject(projectName: string) {
   //   console.log(projectName);

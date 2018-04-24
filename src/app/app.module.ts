@@ -29,6 +29,7 @@ import { IssueComponent } from './issue/issue.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { BoardComponent } from './board/board.component';
 import { ProjectissueComponent } from './projectissue/projectissue.component';
+import { ProjectItemComponent } from './project-item/project-item.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { ProjectissueComponent } from './projectissue/projectissue.component';
     IssueComponent,
     SidenavComponent,
     BoardComponent,
-    ProjectissueComponent
+    ProjectissueComponent,
+    ProjectItemComponent
   ],
   imports: [
     BrowserModule,
@@ -63,8 +65,8 @@ import { ProjectissueComponent } from './projectissue/projectissue.component';
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'login', component: LoginComponent },
-      { path: 'project/:id', component: ProjectComponent},
       { path: 'project', component: ProjectComponent},
+      { path: 'project-item/:id', component: ProjectItemComponent},
       { path: 'issue/:userId',component: IssueComponent},
       { path: 'issue', component: IssueComponent}
     ])

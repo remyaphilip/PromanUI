@@ -1,0 +1,21 @@
+
+<div>
+  <ul class="projectMenu">
+    <li>
+      <a>Board</a>
+    </li>
+    <li (click)="getIssue()">
+      <a>Issue</a>
+    </li>
+  </ul>
+  <img src="./assets/img/plus-symbol.svg">
+</div>
+
+
+
+<div *ngIf="menuItem == 0">
+  <app-board *ngIf="menuItem == 0" [lists]="lists"></app-board>
+</div>
+<div *ngIf="menuItem == 1">
+  <app-projectissue [issue]="issue" [issueColumn]="issueColumn"></app-projectissue>
+</div>
