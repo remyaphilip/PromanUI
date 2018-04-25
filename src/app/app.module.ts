@@ -31,6 +31,8 @@ import { BoardComponent } from './board/board.component';
 import { ProjectissueComponent } from './projectissue/projectissue.component';
 import { ProjectItemComponent } from './project-item/project-item.component';
 import { SharedService } from './shared.service';
+import { OutletComponent } from './outlet/outlet.component';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 
 @NgModule({
@@ -47,7 +49,9 @@ import { SharedService } from './shared.service';
     SidenavComponent,
     BoardComponent,
     ProjectissueComponent,
-    ProjectItemComponent
+    ProjectItemComponent,
+    OutletComponent,
+    NotfoundComponent
   ],
   imports: [
     BrowserModule,
@@ -64,16 +68,17 @@ import { SharedService } from './shared.service';
     MatCardModule,
     MatSidenavModule,
     RouterModule.forRoot([
-      
-      { path: '', component: HomeComponent },
-      { path: 'login', component: LoginComponent },
+
+      { path: 'home', component: HomeComponent },
       { path: 'project', component: ProjectComponent },
       { path: 'project-item', component: ProjectItemComponent },
       { path: 'issue/:userId', component: IssueComponent },
-      { path: 'issue', component: IssueComponent }
+      { path: 'issue', component: IssueComponent },
+      { path: 'login', component: LoginComponent },
+      { path: '**', component: NotfoundComponent }
     ])
   ],
   providers: [LoginService],
-  bootstrap: [AppComponent, SidenavComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

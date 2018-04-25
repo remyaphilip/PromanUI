@@ -13,13 +13,13 @@ import { link } from '../navbar/link'
 
 export class SidenavComponent implements OnInit {
 
-  navLinks = [
-    new link('Home', '')
-    , new link('Project', 'project')
-    , new link('Issue', 'issue')
-    , new link('Group', 'group')
-    , new link('invite', 'invite')
-  ];
+  // navLinks = [
+  //   new link('Home','home')
+  //   , new link('Project', 'project')
+  //   , new link('Issue', 'issue')
+  //   , new link('Group', 'group')
+  //   , new link('invite', 'invite')
+  // ];
 
   projectList: Nav[] = [];
   project: Project[] = [];

@@ -14,6 +14,7 @@ export class LoginService {
   private base = environment._baseUrl;
   userId: number;
   projectId: number;
+  login: boolean = true;
 
   private project: Project[];
   constructor(private http: HttpClient) { }
