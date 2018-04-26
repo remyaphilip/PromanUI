@@ -1,22 +1,93 @@
-.list{
+.navBar {
+  height: 40px;
+  ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+    background-color: rgb(201, 201, 201);
+    position: -webkit-sticky;
+    top: 0;
+    li {
+      float: left;
+    }
+    li a {
+      display: block;
+      color: #333;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      &:hover {
+        background-color: #aaa5a5a3;
+      }
+    }
+  }
+  img {
+    width: 25px;
+    height: 25px;
+    color: whitesmoke;
+    position: absolute;
+    right: 15px;
+    top: 15%;
+  }
+}
+
+.list {
   margin: 10px;
   margin-left: 0;
+  margin-bottom: 5px;
   height: 30px;
- width: 100%;
-  ul{
-    
-    
+  width: 100%;
+  ul {
     list-style: none;
   }
-  li{
+  li div {
     border: 1px;
     margin-right: 10px;
     width: 350px;
     float: left;
-    background-color: #FAFAFA;
+    color: white;
+    background-color: rgba($color: #7a7a7c, $alpha: 1.0);
     padding: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     box-shadow: 2px;
-    
+  }
+}
 
+.card {
+  position: absolute;
+  left: 300px;
+  width: 700px;
+  padding: 10px;
+  background-color: white;
+}
+
+.cardHead {
+  width: 100%;
+  margin: 15px;
+  img {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.cardContent {
+  width: 100%;
+  margin: 15px;
+  label {
+    display: block;
+    width: 150px;
+    float: left;
+    padding: 5px;
+  }
+  input[type],
+  select {
+    width: 300px;
+  }
+  textarea {
+    overflow-y: auto;
+    height: 200px;
+    width: 95%;
   }
 }

@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { SharedService } from '../shared.service';
 import { User } from '../interface/user';
 import { LoginService } from '../login.service';
 import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
-  providers: [SharedService],
   templateUrl: './login.component.html',
   styleUrls: ['./util.css', './login.component.scss']
 })

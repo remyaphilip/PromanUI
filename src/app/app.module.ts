@@ -30,7 +30,6 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { BoardComponent } from './board/board.component';
 import { ProjectissueComponent } from './projectissue/projectissue.component';
 import { ProjectItemComponent } from './project-item/project-item.component';
-import { SharedService } from './shared.service';
 import { OutletComponent } from './outlet/outlet.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 

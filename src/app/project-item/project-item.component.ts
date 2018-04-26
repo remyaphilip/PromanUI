@@ -28,7 +28,7 @@ export class ProjectItemComponent implements OnInit {
   constructor(private _loginService: LoginService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.getBoard(this._loginService.projectId);
+    
   }
   // getParams() {
   //   this.temp = this.route.paramMap
@@ -40,21 +40,7 @@ export class ProjectItemComponent implements OnInit {
 
   // }
 
-  getBoard(projectId: number) {
-    this.temp1 = this._loginService.getBoard(projectId).subscribe(data => {
-      this.board = data as Board;
-      this.getList(this.board.boardId);
-    })
-
-  }
-
-  getList(boardId: number) {
-    this.temp = this._loginService.getList(boardId).subscribe(response => {
-      this.lists = <List[]>response;
-    })
-
-  }
-
+  
   getIssue() {
     this.menuItem = 1;
     this.temp2 = this._loginService.getIssue(this._loginService.projectId).subscribe(response => {

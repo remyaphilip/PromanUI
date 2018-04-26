@@ -1,4 +1,5 @@
 div {
+  
   ul {
     list-style-type: none;
     margin: 0px;
@@ -9,6 +10,7 @@ div {
     top: 0;
     li {
       float: left;
+      
     }
     li a {
       display: block;
@@ -36,6 +38,7 @@ table {
   border-collapse: collapse;
   padding: 5px;
   width: 100%;
+  background-color: white;
   tr {
     &:hover {
       background-color: #e4e1e1a3;

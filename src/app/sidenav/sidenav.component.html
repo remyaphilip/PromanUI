@@ -5,17 +5,16 @@
         <li>
           <a routerLink="home" routerLinkActive="active">Dashboard</a>
         </li>
-        <li class="project" (click)="onClick()">
+        <li class="project">
           <a routerLink="project" routerLinkActive="active">Project</a>
-          <img src="./assets/img/sort-down.svg">
         </li>
         <!-- <div class="projectlist" *ngIf="projectListStat"> -->
-          <!-- <a *ngFor="let plist of projectList;" [routerLink]="[ '/project', plist.name ]">{{plist.name}}</a> -->
-          <!-- <a *ngFor="let plist of project;" [routerLink]="[ '/project', plist ]">{{plist.name}}</a>
-        </div> --> 
+        <!-- <a *ngFor="let plist of projectList;" [routerLink]="[ '/project', plist.name ]">{{plist.name}}</a> -->
+        <!-- <a *ngFor="let plist of project;" [routerLink]="[ '/project', plist ]">{{plist.name}}</a>
+        </div> -->
         <li>
           <!-- <a routerLink="issue" routerLinkActive="active" >Issue</a> -->
-           <a [routerLink]="['/issue', userId ]" routerLinkActive="active" >Issue</a>
+          <a [routerLink]="['/issue', userId ]" routerLinkActive="active">Issue</a>
         </li>
         <li>
           <a routerLink="user" routerLinkActive="active">Users</a>
@@ -23,7 +22,4 @@
       </ul>
     </nav>
   </div>
-  <!-- <div class="sidenavcontent">
-    <router-outlet></router-outlet>
-  </div> -->
 </div>

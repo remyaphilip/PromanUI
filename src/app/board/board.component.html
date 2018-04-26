@@ -1,11 +1,75 @@
+<div class="navBar">
+  <ul class="projectMenu">
+    <li>
+      <a>Board</a>
+    </li>
+    <li (click)="getIssue()">
+      <a>Issue</a>
+    </li>
+  </ul>
+  <img src="./assets/img/plus-symbol.svg">
+</div>
+
 <div class="list">
   <ul>
-     <li *ngFor = "let list of lists" >
-     {{list.listName}}
-     </li>
-     
-       
-        
-  </ul>
+    <li *ngFor="let list of lists">
+      <div>
+        {{list.listName}}
 
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div class="card" *ngIf="cardForm">
+  <div class="cardHead">
+    <h2 style="float:left">Create Task</h2>
+    <div class="right-head" style="margin-left:40%">
+      <label>26-Apr-2018</label>
+      <img src="./assets/img/attachment.svg" class="attachIcon">
+      <img src="./assets/img/floppy-disk.svg">
+      <img src="./assets/img/rubbish-bin-delete-button.svg">
+      <img src="./assets/img/multiply.svg">
+    </div>
+  </div>
+  <div class="cardContent">
+    <form class="taskform">
+      <div>
+        <label for="taskstatus">Task Status</label>
+        <select name="Task status" id="taskstatus">
+          <option value="To da">To do</option>
+        </select>
+      </div>
+      <br>
+      <div>
+        <label for="startDate">Start Date</label>
+        <input type="date" name="StartDate" id="startDate" >
+      </div>
+      <br>
+      <div>
+        <label for="endDate">End Date</label>
+        <input type="date" name="endDate" id="endDate">
+      </div>
+      <br>
+      <div>
+        <label for="assignedTo">Assigned to</label>
+        <select name="Select assignee" id="assignedTo">
+          <option value="Remya">Remya</option>
+        </select>
+      </div>
+      <br>
+      <div>
+        <label for="summary">Summary</label>
+        <input type="text" name="Summary" id="summary">
+      </div>
+      <br>
+      <div>
+        <label for="description">Description</label>
+      </div>
+      <div class="description">
+        <textarea id="description" rows="12"></textarea>
+      </div>
+
+    </form>
+  </div>
 </div>
