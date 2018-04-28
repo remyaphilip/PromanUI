@@ -2,6 +2,10 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Board } from '../interface/board';
 import { LoginService } from '../login.service';
 import { List } from '../interface/list';
+import { Card } from '../interface/card';
+import { User } from '../interface/user';
+import { FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,27 +15,48 @@ import { List } from '../interface/list';
 })
 export class BoardComponent implements OnInit {
 
-  lists: List[] = [];
-  cardForm: boolean = true;
-  temp1: any;
-  temp: any;
+  list: List[] = [];
+  userList: User[] = [];
+  card = <Card>{};
+  cardForm: boolean = false;
+  temp; temp1; temp2; temp3: any;
   board = <Board>{};
-
-  constructor(private _loginService: LoginService) {
-
-  }
-
-  ngOnInit() {
+  form: FormGroup;
+  post: any;
+  res: Card;
+  boardFlag: boolean = true;
+  
+  constructor(private _loginService: LoginService,private router: Router) {
     this.getBoard(this._loginService.projectId);
   }
 
-  cardFormEditMode() {
+  ngOnInit() {
+    //this.getBoard(this._loginService.projectId);
+    this.getAllUserPerProject(this._loginService.projectId);
+    this.form = new FormGroup({
+      summary: new FormControl(''),
+      description: new FormControl(''),
+      startDate: new FormControl(''),
+      endDate: new FormControl(''),
+      listId: new FormControl(''),
+      assignedToId: new FormControl('')
+    });
+  }
 
+  addCard(post) {
+    this.card = this.form.value;
+    this.card.reportedById = this._loginService.userId;
+    this.card.projectId = this._loginService.projectId;
+    this.temp3 = this._loginService.AddCard(post.listId, this.card).subscribe(response => {
+      this.res = response as Card;
+    })
 
   }
 
-  now(){
-    return new Date().toDateString();
+  getAllUserPerProject(projectId: number) {
+    this.temp2 = this._loginService.getAllUserPerProject(this._loginService.projectId).subscribe(response => {
+      this.userList = response as User[];
+    })
   }
 
   getBoard(projectId: number) {
@@ -42,10 +67,20 @@ export class BoardComponent implements OnInit {
 
   }
 
+  boardOnClick(){
+    this.getBoard(this._loginService.projectId);
+  }
   getList(boardId: number) {
     this.temp = this._loginService.getList(boardId).subscribe(response => {
-      this.lists = <List[]>response;
+      this.list = <List[]>response;
     })
 
   }
+  getProjectIssue(){
+   console.log('test')
+   this.boardFlag = false;
+  }
+
+
+  
 }

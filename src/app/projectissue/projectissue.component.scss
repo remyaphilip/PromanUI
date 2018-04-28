@@ -1,17 +1,20 @@
 table{
-    border: 1px solid grey;
+    //border: 1px solid grey;
     border-collapse: collapse;
     padding: 5px;
     width: 100%;
     th {
-        border: 1px solid grey;
+        border: none;
         border-collapse: collapse;
         padding: 5px;
+        background-color: #7A7A7C;
+        color: white;
     }
     td {
         border: none;
         border-collapse: collapse;
         padding: 5px;
+        background-color: white;
     }
 
 }

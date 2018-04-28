@@ -13,7 +13,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatCardModule } from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 import { AppComponent } from './app.component';
@@ -32,6 +32,7 @@ import { ProjectissueComponent } from './projectissue/projectissue.component';
 import { ProjectItemComponent } from './project-item/project-item.component';
 import { OutletComponent } from './outlet/outlet.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+
 
 
 @NgModule({
@@ -66,10 +67,14 @@ import { NotfoundComponent } from './notfound/notfound.component';
     MatSliderModule,
     MatCardModule,
     MatSidenavModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
 
       { path: 'home', component: HomeComponent },
       { path: 'project', component: ProjectComponent },
+      { path: 'board', component: BoardComponent},
+      { path: 'projectissue', component: ProjectissueComponent},
       { path: 'project-item', component: ProjectItemComponent },
       { path: 'issue/:userId', component: IssueComponent },
       { path: 'issue', component: IssueComponent },

@@ -1,75 +1,88 @@
 <div class="navBar">
   <ul class="projectMenu">
-    <li>
+    <li (click)="boardOnClick()">
       <a>Board</a>
     </li>
-    <li (click)="getIssue()">
+    <li (click)="getProjectIssue()">
       <a>Issue</a>
     </li>
   </ul>
-  <img src="./assets/img/plus-symbol.svg">
+  <button (click)="cardForm = true">
+    <img src="./assets/img/plus-symbol.svg" *ngIf="boardFlag">
+  </button>
+  <button >
+      <img src="./assets/img/plus-symbol.svg" *ngIf="!boardFlag">
+    </button>
 </div>
+<div *ngIf="boardFlag">
+  <div class="list">
+    <ul>
+      <li *ngFor="let lis of list">
+        {{lis.listName}}
+      </li>
+    </ul>
+  </div>
 
-<div class="list">
-  <ul>
-    <li *ngFor="let list of lists">
-      <div>
-        {{list.listName}}
-
-      </div>
-    </li>
-  </ul>
-</div>
-
-<div class="card" *ngIf="cardForm">
-  <div class="cardHead">
-    <h2 style="float:left">Create Task</h2>
-    <div class="right-head" style="margin-left:40%">
-      <label>26-Apr-2018</label>
-      <img src="./assets/img/attachment.svg" class="attachIcon">
-      <img src="./assets/img/floppy-disk.svg">
-      <img src="./assets/img/rubbish-bin-delete-button.svg">
-      <img src="./assets/img/multiply.svg">
+  <div class="card" *ngIf="cardForm">
+    <div class="cardcontent">
+      <form class="taskform" novalidate [formGroup]="form" (ngSubmit)="addCard(form.value)">
+        <div class="cardHead">
+          <h3 style="float:left">Create Task</h3>
+          <div class="right-head">
+            <img src="./assets/img/attachment.svg" class="attachIcon">
+            <button type="submit">
+              <img src="./assets/img/floppy-disk.svg">
+            </button>
+            <img src="./assets/img/rubbish-bin-delete-button.svg">
+            <button (click)="cardForm=false">
+              <img src="./assets/img/multiply.svg">
+            </button>
+          </div>
+        </div>
+        <div class="formContent">
+          <div>
+            <label for="listId">Task Status</label>
+            <select id="listId" formControlName="listId">
+              <option>Select task type</option>
+              <option *ngFor="let lis of list" [value]="lis.listId">{{lis.listName}}</option>
+            </select>
+          </div>
+          <br>
+          <div>
+            <label for="startDate">Start Date</label>
+            <input type="date" formControlName="startDate" id="startDate">
+          </div>
+          <br>
+          <div>
+            <label for="endDate">End Date</label>
+            <input type="date" formControlName="endDate" id="endDate">
+          </div>
+          <br>
+          <div>
+            <label for="assignedToId">Assigned to</label>
+            <select formControlName=assignedToId id="assignedToId">
+              <option>Select assignee</option>
+              <option *ngFor="let user of userList" [value]="user.userId">{{user.userName}}</option>
+            </select>
+          </div>
+          <br>
+          <div>
+            <label for="summary">Summary</label>
+            <input type="text" formControlName="summary" id="summary">
+          </div>
+          <br>
+          <div>
+            <label for="description">Description</label>
+          </div>
+          <div class="description">
+            <textarea id="description" formControlName="description" rows="12"></textarea>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
-  <div class="cardContent">
-    <form class="taskform">
-      <div>
-        <label for="taskstatus">Task Status</label>
-        <select name="Task status" id="taskstatus">
-          <option value="To da">To do</option>
-        </select>
-      </div>
-      <br>
-      <div>
-        <label for="startDate">Start Date</label>
-        <input type="date" name="StartDate" id="startDate" >
-      </div>
-      <br>
-      <div>
-        <label for="endDate">End Date</label>
-        <input type="date" name="endDate" id="endDate">
-      </div>
-      <br>
-      <div>
-        <label for="assignedTo">Assigned to</label>
-        <select name="Select assignee" id="assignedTo">
-          <option value="Remya">Remya</option>
-        </select>
-      </div>
-      <br>
-      <div>
-        <label for="summary">Summary</label>
-        <input type="text" name="Summary" id="summary">
-      </div>
-      <br>
-      <div>
-        <label for="description">Description</label>
-      </div>
-      <div class="description">
-        <textarea id="description" rows="12"></textarea>
-      </div>
+</div>
 
-    </form>
-  </div>
+<div *ngIf="!boardFlag" class="projectissue">
+  <app-projectissue></app-projectissue>
 </div>

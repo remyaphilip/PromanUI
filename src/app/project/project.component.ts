@@ -46,7 +46,7 @@ export class ProjectComponent {
 
   setProject(projectId: number) {
     this._loginService.projectId = projectId;
-    this.router.navigate(['project-item']);
+    this.router.navigate(['board']);
   }
 
 
