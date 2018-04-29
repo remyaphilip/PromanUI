@@ -1,8 +1,76 @@
+<div class="navBar">
+  <h3>Track Issue</h3>
+  <button (click)="issueForm = true">
+    <h3>Add Issue </h3>
+  </button>
+</div>
+
+
+
 <table>
-    <tr>
-        <th *ngFor = "let col of issueColumn">{{col}}</th>
-    </tr>
-    <tr *ngFor = "let iss of issue">
-        <td *ngFor = "let col of issueColumn" >{{iss[col]}}</td>
-    </tr>
+  <tr>
+    <th *ngFor="let col of issueColumn">{{col}}</th>
+  </tr>
+  <tr *ngFor="let iss of issue">
+    <td *ngFor="let col of issueColumn">{{iss[col]}}</td>
+  </tr>
 </table>
+
+<div class="card" *ngIf="issueForm">
+  <div class="cardcontent">
+    <form class="taskform" novalidate [formGroup]="form" (ngSubmit)="addCard(form.value)">
+      <div class="cardHead">
+        <h3 style="float:left">Create Task</h3>
+        <div class="right-head">
+          <img src="./assets/img/attachment.svg" class="attachIcon">
+          <button type="submit">
+            <img src="./assets/img/floppy-disk.svg">
+          </button>
+          <img src="./assets/img/rubbish-bin-delete-button.svg">
+          <button (click)="issueForm=false">
+            <img src="./assets/img/multiply.svg">
+          </button>
+        </div>
+      </div>
+      <div class="formContent">
+        <div>
+          <label for="listId">Task Status</label>
+          <select id="listId" formControlName="listId">
+            <option>Select task type</option>
+            <option *ngFor="let lis of list" [value]="lis.listId">{{lis.listName}}</option>
+          </select>
+        </div>
+        <br>
+        <div>
+          <label for="startDate">Start Date</label>
+          <input type="date" formControlName="startDate" id="startDate">
+        </div>
+        <br>
+        <div>
+          <label for="endDate">End Date</label>
+          <input type="date" formControlName="endDate" id="endDate">
+        </div>
+        <br>
+        <div>
+          <label for="assignedToId">Assigned to</label>
+          <select formControlName=assignedToId id="assignedToId">
+            <option>Select assignee</option>
+            <option *ngFor="let user of userList" [value]="user.userId">{{user.userName}}</option>
+          </select>
+        </div>
+        <br>
+        <div>
+          <label for="summary">Summary</label>
+          <input type="text" formControlName="summary" id="summary">
+        </div>
+        <br>
+        <div>
+          <label for="description">Description</label>
+        </div>
+        <div class="description">
+          <textarea id="description" formControlName="description" rows="12"></textarea>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

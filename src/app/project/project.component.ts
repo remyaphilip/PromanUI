@@ -20,6 +20,7 @@ export class ProjectComponent {
 
   projectList: Project[] = [];
   projectColumn: string[];
+  boardFlag: boolean;
 
   constructor(private router: Router, private _loginService: LoginService) {
 
@@ -46,7 +47,10 @@ export class ProjectComponent {
 
   setProject(projectId: number) {
     this._loginService.projectId = projectId;
-    this.router.navigate(['board']);
+    this._loginService.projectName = this.projectList.find(p => p.projectId == projectId).name;
+    this.boardFlag = true;
+    this.router.navigate(['projectitem', this.boardFlag]);
+
   }
 
 

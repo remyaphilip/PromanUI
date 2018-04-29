@@ -1,20 +1,15 @@
 <div class="navBar">
-  <ul class="projectMenu">
-    <li (click)="boardOnClick()">
-      <a>Board</a>
-    </li>
-    <li (click)="getProjectIssue()">
-      <a>Issue</a>
-    </li>
-  </ul>
+
+  <h3>Track Board</h3>
   <button (click)="cardForm = true">
-    <img src="./assets/img/plus-symbol.svg" *ngIf="boardFlag">
+    <h3>Add Task </h3>
   </button>
-  <button >
-      <img src="./assets/img/plus-symbol.svg" *ngIf="!boardFlag">
-    </button>
+  
 </div>
-<div *ngIf="boardFlag">
+
+<!-- --------------------------------------------------------------------------------------------------------------- -->
+
+<div>
   <div class="list">
     <ul>
       <li *ngFor="let lis of list">
@@ -81,8 +76,6 @@
       </form>
     </div>
   </div>
-</div>
 
-<div *ngIf="!boardFlag" class="projectissue">
-  <app-projectissue></app-projectissue>
+
 </div>

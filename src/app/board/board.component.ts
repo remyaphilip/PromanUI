@@ -5,7 +5,7 @@ import { List } from '../interface/list';
 import { Card } from '../interface/card';
 import { User } from '../interface/user';
 import { FormGroup, FormControl } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 
 @Component({
@@ -19,19 +19,19 @@ export class BoardComponent implements OnInit {
   userList: User[] = [];
   card = <Card>{};
   cardForm: boolean = false;
+  issueForm: boolean = false;
   temp; temp1; temp2; temp3: any;
   board = <Board>{};
   form: FormGroup;
   post: any;
   res: Card;
-  boardFlag: boolean = true;
-  
-  constructor(private _loginService: LoginService,private router: Router) {
+  boardFlag: boolean;
+
+  constructor(private _loginService: LoginService, private router: Router) {
     this.getBoard(this._loginService.projectId);
   }
 
   ngOnInit() {
-    //this.getBoard(this._loginService.projectId);
     this.getAllUserPerProject(this._loginService.projectId);
     this.form = new FormGroup({
       summary: new FormControl(''),
@@ -67,7 +67,7 @@ export class BoardComponent implements OnInit {
 
   }
 
-  boardOnClick(){
+  boardOnClick() {
     this.getBoard(this._loginService.projectId);
   }
   getList(boardId: number) {
@@ -77,10 +77,8 @@ export class BoardComponent implements OnInit {
 
   }
   getProjectIssue(){
-   console.log('test')
-   this.boardFlag = false;
+    this.boardFlag = false;
+   this.router.navigate(['projectitem', this.boardFlag ]);
+   
   }
-
-
-  
 }

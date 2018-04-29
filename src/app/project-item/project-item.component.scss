@@ -1,12 +1,11 @@
-div {
+.projectItemBar {
   height: 30px;
   padding: 3px;
+  vertical-align: middle;
   h2 {
-  color:rgba(96, 89, 89, 0.83);
-  font-family: Cambria,Georgia;
-  }
-
-  // ul {
+    color: #333;
+    font-family: Cambria, Georgia;
+  } // ul {
   //   list-style-type: none;
   //   margin: 0px;
   //   padding: 0px;
@@ -15,5 +14,31 @@ div {
   //   position: -webkit-sticky;
   //   top: 0;
   // }
-    
+  ul {
+    list-style-type: none;
+     overflow: hidden;
+     position: fixed;
+     right: 0%;
+     top: 8%;
+   // background-color: rgb(201, 201, 201);
+    position: -webkit-sticky;
+   // top: 0;
+    li {
+      float: right;
+    }
+    li a {
+      display: block;
+      color: #333;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      &:hover {
+        background-color: #aaa5a5a3;
+      }
+    }
+  }
 }
+
+// .subitems {
+ 
+// }

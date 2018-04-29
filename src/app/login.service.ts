@@ -20,6 +20,7 @@ export class LoginService {
   private base = environment._baseUrl;
   userId: number;
   projectId: number;
+  projectName: string;
   login: boolean = true;
 
 

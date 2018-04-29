@@ -1,12 +1,21 @@
+<div class="projectItemBar">
+  <h2>{{projectName}}</h2>
+  
+    <ul class="projectMenu">
+      <li (click)="boardFlag = true">
+        <a>Board</a>
+      </li>
+      <li (click)="boardFlag = false">
+        <a>Issue</a>
+      </li>
+    </ul>
+  
+</div>
 
-<div class="navBar">
-    <h2>Project Name</h2>
-  </div>
-
-<div>
+<div *ngIf="boardFlag">
   <!-- <app-board *ngIf="menuItem == 0" [lists]="lists"></app-board> -->
   <app-board></app-board>
 </div>
-<div>
-  <app-projectissue ></app-projectissue>
+<div *ngIf="!boardFlag">
+  <app-projectissue></app-projectissue>
 </div>

@@ -73,9 +73,9 @@ import { NotfoundComponent } from './notfound/notfound.component';
 
       { path: 'home', component: HomeComponent },
       { path: 'project', component: ProjectComponent },
-      { path: 'board', component: BoardComponent},
-      { path: 'projectissue', component: ProjectissueComponent},
-      { path: 'project-item', component: ProjectItemComponent },
+     // { path: 'projectissue', component: ProjectissueComponent},
+      { path: 'board', component: BoardComponent},     
+      { path: 'projectitem/:flag', component: ProjectItemComponent },
       { path: 'issue/:userId', component: IssueComponent },
       { path: 'issue', component: IssueComponent },
       { path: 'login', component: LoginComponent },

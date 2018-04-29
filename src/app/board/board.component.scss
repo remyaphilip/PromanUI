@@ -1,40 +1,69 @@
 .navBar {
-  height: 40px;
-  ul {
-    list-style-type: none;
-    margin: 0px;
-    margin-bottom: 5px;
-    padding: 0px;
-    overflow: hidden;
-    background-color: rgb(201, 201, 201);
-    position: -webkit-sticky;
-    top: 0;
-    li {
-      float: left;
-    }
-    li a {
-      display: block;
-      color: #333;
-      text-align: center;
-      padding: 14px 16px;
-      text-decoration: none;
-      &:hover {
-        background-color: #aaa5a5a3;
-      }
-    }
+  height: 30px;
+  background-color: rgba(170,160,145,0.68);
+  
+  h3 {
+    position: fixed;
+    top: 14.4%;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: white;
+    font-family: Cambria, Georgia;
   }
+  
   button {
+    color: white;
     border: none;
     position: fixed;
-    right: 15px;
-    top: 10.5%;
+    right: 5.8%;
+    top: 15.2%;
     background: none;
-    img {
-      width: 25px;
-      height: 25px;
-    }
+   h3{
+     position: none;
+     font-family: Cambria, Georgia;
+   }
   }
 }
+
+
+
+// .navBar {
+//   height: 40px;
+//   ul {
+//     list-style-type: none;
+//     margin: 0px;
+//     margin-bottom: 5px;
+//     padding: 0px;
+//     overflow: hidden;
+//     background-color: rgb(201, 201, 201);
+//     position: -webkit-sticky;
+//     top: 0;
+//     li {
+//       float: left;
+//     }
+//     li a {
+//       display: block;
+//       color: #333;
+//       text-align: center;
+//       padding: 14px 16px;
+//       text-decoration: none;
+//       &:hover {
+//         background-color: #aaa5a5a3;
+//       }
+//     }
+//   }
+//   button {
+//     border: none;
+//     position: fixed;
+//     right: 15px;
+//     top: 16.2%;
+//     background: none;
+//     img {
+//       width: 25px;
+//       height: 25px;
+//     }
+//   }
+// }
 
 .list {
   margin: 10px;

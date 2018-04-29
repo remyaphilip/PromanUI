@@ -11,22 +11,22 @@ import { LoginService } from '../login.service';
 })
 export class ProjectissueComponent implements OnInit {
 
- // @Input() issueColumn: string[];
-  //@Input() issue: Issue[];
-
   project: Project;
   temp: any;
   temp1: any;
   temp2: any;
   issue: Issue[] = [];
   issueColumn: string[] = [];
+  issueForm: boolean =true;
   constructor(private _loginService: LoginService) { }
 
   ngOnInit() {
+    console.log('in projectissue');
     this.getIssue();
   }
- 
+
   getIssue() {
+    console.log('p');
     this.temp2 = this._loginService.getIssue(this._loginService.projectId).subscribe(response => {
       this.issue = <Issue[]>response;
       console.log(this.project.projectId, 'test', this.issue);
@@ -40,8 +40,8 @@ export class ProjectissueComponent implements OnInit {
   getIssueColumn(): string[] {
     return ["issueId",
       "title",
-     // "creationDate",
-     // "description",
+      // "creationDate",
+      // "description",
       // "type",
       // "category",
       // "dueDate",
@@ -50,7 +50,7 @@ export class ProjectissueComponent implements OnInit {
       // "estimate",
       // "timespent",
       "statusCode",
-    //  "severityCode",
+      //  "severityCode",
       "priorityCode"]
     //  "projectId"]
   }
