@@ -20,7 +20,7 @@
   <div class="cardcontent">
     <form class="taskform" novalidate [formGroup]="form" (ngSubmit)="addCard(form.value)">
       <div class="cardHead">
-        <h3 style="float:left">Create Task</h3>
+        <h3 style="float:left">Log Issue</h3>
         <div class="right-head">
           <img src="./assets/img/attachment.svg" class="attachIcon">
           <button type="submit">
@@ -34,7 +34,7 @@
       </div>
       <div class="formContent">
         <div>
-          <label for="listId">Task Status</label>
+          <label for="listId">Issue Status</label>
           <select id="listId" formControlName="listId">
             <option>Select task type</option>
             <option *ngFor="let lis of list" [value]="lis.listId">{{lis.listName}}</option>
