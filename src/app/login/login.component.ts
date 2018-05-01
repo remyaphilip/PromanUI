@@ -12,17 +12,15 @@ export class LoginComponent implements OnInit {
   user;
   email;
   passwordHash;
-  accessApplication: boolean = false;
-  login : boolean;
 
   constructor(private _loginService: LoginService,
-  private router: Router) { 
-    this.login = _loginService.login;
+    private router: Router) {
+      this._loginService.login = true;
   }
 
-  
-  ngOnInit() {
 
+  ngOnInit() {
+    this._loginService.login = true;
   }
 
   onLogin(email: string, passwordHash: string) {
@@ -30,9 +28,8 @@ export class LoginComponent implements OnInit {
       .subscribe((response: User) => {
         this.user = response;
         this._loginService.userId = this.user.userId;
-        this.accessApplication = this.user ? true : false;
-        this._loginService.login=false;
-        this.router.navigate(['']);
+        this._loginService.login = false;
+        this.router.navigate(['login']);
       });
 
   }

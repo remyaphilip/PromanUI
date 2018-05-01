@@ -50,7 +50,7 @@
   }
   
   a:focus {
-	  outline: none !important;
+	  outline: none;
   }
   
   a:hover {
@@ -175,7 +175,7 @@
 	align-items: center;
 	padding: 15px;
 	position: relative;
-	background-color: #fff;
+	background-color: #F3F3F3;
   }
   
   .wrap-login100 {

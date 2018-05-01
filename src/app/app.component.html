@@ -1,10 +1,9 @@
 <div class="container">
-  <app-navbar></app-navbar>
-  <div class="sidenav">
+  <app-navbar  *ngIf = "!(_loginService.login)" ></app-navbar>
+  <div class="sidenav" *ngIf = "!(_loginService.login)" >
     <app-sidenav></app-sidenav>
   </div>
   <div class="content">
-  <app-outlet></app-outlet>
+    <app-outlet></app-outlet>
   </div>
-  <app-footer></app-footer>
 </div>
