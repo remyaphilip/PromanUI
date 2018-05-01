@@ -17,7 +17,7 @@ export class ProjectissueComponent implements OnInit {
   temp2: any;
   issue: Issue[] = [];
   issueColumn: string[] = [];
-  issueForm: boolean =true;
+  issueForm: boolean =false;
   constructor(private _loginService: LoginService) { }
 
   ngOnInit() {

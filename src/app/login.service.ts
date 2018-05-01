@@ -21,7 +21,7 @@ export class LoginService {
   userId: number;
   projectId: number;
   projectName: string;
-  login: boolean = true;
+  login: boolean;
 
 
 
