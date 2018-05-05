@@ -19,6 +19,7 @@ const httpOptions = {
 export class LoginService {
   private base = environment._baseUrl;
   userId: number;
+  organisation: string;
   projectId: number;
   projectName: string;
   login: boolean;
@@ -57,7 +58,14 @@ export class LoginService {
   }
 
   AddCard(listId: number, card: Card): Observable<Card> {
-    return this.http.post<Card>(this.base + '/card/' + listId, card, httpOptions)
+    return this.http.post<Card>(this.base + '/card/' + listId, card, httpOptions);
+  }
 
+  AddIssue(projectId: number, issue: Issue): Observable<Issue> {
+    return this.http.post<Issue>(this.base + '/issue/' + projectId, issue, httpOptions);
+  }
+
+  GetAllUsers(organisation: string) {
+    return this.http.get<User[]>(this.base + '/usersperorg/' + organisation);
   }
 }

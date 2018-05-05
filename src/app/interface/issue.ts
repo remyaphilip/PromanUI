@@ -1,6 +1,6 @@
 export interface Issue {
     issueId: number;
-    title: string;
+    summary: string;
     creationDate: Date;
     description: string;
     type: string;
@@ -12,6 +12,6 @@ export interface Issue {
     timespent: number
     statusCode: string
     severityCode: number;
-    priorityCode: number
+    priorityCode: string;
     projectId: number;
 }

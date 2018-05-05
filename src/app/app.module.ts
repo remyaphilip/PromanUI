@@ -32,6 +32,7 @@ import { ProjectissueComponent } from './projectissue/projectissue.component';
 import { ProjectItemComponent } from './project-item/project-item.component';
 import { OutletComponent } from './outlet/outlet.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { UserComponent } from './user/user.component';
 
 
 
@@ -51,7 +52,8 @@ import { NotfoundComponent } from './notfound/notfound.component';
     ProjectissueComponent,
     ProjectItemComponent,
     OutletComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
@@ -73,7 +75,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
 
       { path: 'home', component: HomeComponent },
       { path: 'project', component: ProjectComponent },
-     // { path: 'projectissue', component: ProjectissueComponent},
+      { path: 'user', component: UserComponent},
       { path: 'board', component: BoardComponent},     
       { path: 'projectitem/:flag', component: ProjectItemComponent },
       { path: 'issue/:userId', component: IssueComponent },

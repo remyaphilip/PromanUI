@@ -1,0 +1,31 @@
+<div class="userTopBar">
+  <ul>
+    <li>
+      <a>Users</a>
+    </li>
+  </ul>
+</div>
+<div class="users">
+  <ul >
+    <li *ngFor = "let user of userList">
+      <div class="userIcon">
+        <img src="./assets/img/round-account-button-with-user-inside.svg">
+      </div>
+      <div class="userInfo">
+        <div class="userInfoName">{{user.name}}</div>
+        <div class="userInfoEmail">{{user.email}}</div>
+      </div>
+      <div class="userStatus">invitation pending</div>
+      <div class="userRole">{{user.userRole}}</div>
+      <div class="userActions">
+        <div class="dropDownIcon">
+          <button>
+            <img src="./assets/img/more.svg">
+          </button>
+          <div class="dropDownContent">
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
