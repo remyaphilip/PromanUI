@@ -5,5 +5,7 @@ export interface User {
     email: string,
     jobTitle: string,
     organisation: string,
-    profileImages: string
+    profileImages: string,
+    name: string,
+    userRole: string
 }

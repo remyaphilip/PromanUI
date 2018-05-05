@@ -21,7 +21,7 @@
 
 <div class="issue" *ngIf="issueForm">
   <div class="issuecontent">
-    <form class="issueForm" novalidate [formGroup]="form" (ngSubmit)="addCard(form.value)">
+    <form class="issueForm" novalidate [formGroup]="form" (ngSubmit)="addIssue(form.value)">
       <div class="issueHead">
         <h3 style="float:left">Log Issue</h3>
         <div class="right-head">
@@ -34,7 +34,7 @@
           </button>
         </div>
       </div>
-      <div class="formContent">
+      <div class="issueContent">
         <div class="block1">
           <div>
             <label for="issueStatus">Status</label>
@@ -49,7 +49,7 @@
 
           <div class="issuePriority">
             <label for="issuePriority">Priority</label>
-            <select id="issuePriority" formControlName="issuePriority">
+            <select id="issuePriority" formControlName="priorityCode">
               <option>Select Priority</option>
               <option>Low</option>
               <option>High</option>
@@ -76,8 +76,8 @@
           </div>
 
           <div>
-            <label for="assignedToId">Assigned to</label>
-            <select formControlName=assignedToId id="assignedToId">
+            <label for="assignToId">Assign to</label>
+            <select formControlName=assignToId id="assignToId">
               <option>Select assignee</option>
               <option *ngFor="let user of userList" [value]="user.userId">{{user.userName}}</option>
             </select>

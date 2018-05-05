@@ -1,0 +1,123 @@
+.userTopBar {
+  ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+    background-color: rgb(201, 201, 201);
+    position: -webkit-sticky;
+    top: 0;
+    li {
+      float: left;
+    }
+    li a {
+      display: block;
+      color: #333;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      &:hover {
+        background-color: #aaa5a5a3;
+      }
+    }
+  }
+  img {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    left: 1258px;
+    top: 15%;
+    color: whitesmoke;
+  }
+}
+
+.users {
+  width: 100%;
+  display: flex;
+  ul {
+    list-style: none;
+    box-sizing: border-box;
+    background-color: white;
+    width: 100%;
+    li {
+      box-sizing: border-box;
+      display: flex;
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+      -webkit-box-align: center;
+      align-items: center;
+      button {
+        //  font-size: 16px;
+      }
+      img {
+        width: 35px;
+        height: 35px;
+        border-radius: 10px;
+      }
+    }
+  }
+}
+
+.userIcon {
+  margin-right: 16px;
+  width: 50px;
+}
+
+.userInfoName {
+  font-weight: 600;
+}
+
+.userInfo {
+  -webkit-box-flex: 1;
+  flex: 1 1 auto;
+  line-height: 22px;
+  margin-right: 10px;
+  div {
+    font-size: 14px;
+    max-width: 400px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.userInfoName {
+  font-weight: 600;
+  color: #333;
+}
+
+.userInfoEmail {
+  font-weight: 300;
+}
+
+.userStatus {
+  // width: 100px;
+  width: 50px;
+  flex-shrink: 0;
+  flex: 0 0 150px;
+  font-style: italic;
+  -webkit-box-flex: 0;
+}
+
+.userRole {
+  margin-right: 80px;
+  -webkit-box-flex: 0;
+  text-align: right; //width: 100px;
+  flex: 0 0 94px;
+}
+
+.userActions {
+  width: 60px;
+  div {
+    button {
+      cursor: pointer;
+      border: 1px solid #ccc;
+      border-radius: 2px;
+      padding: 8px 14px;
+      background: none; // font-size: 10px;
+      img {
+        width: 10px;
+        height: 10px;
+      }
+    }
+  }
+}

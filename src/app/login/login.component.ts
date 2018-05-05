@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private _loginService: LoginService,
     private router: Router) {
-      this._loginService.login = true;
+    this._loginService.login = true;
   }
 
 
@@ -28,9 +28,11 @@ export class LoginComponent implements OnInit {
       .subscribe((response: User) => {
         this.user = response;
         this._loginService.userId = this.user.userId;
+        this._loginService.organisation = this.user.organisation;
         this._loginService.login = false;
+        console.log(this.user);
+        console.log(this._loginService.organisation);
         this.router.navigate(['login']);
       });
-
   }
 }

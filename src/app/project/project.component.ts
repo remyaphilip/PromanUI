@@ -26,7 +26,7 @@ export class ProjectComponent {
 
   }
   ngOnInit(): void {
-    this._loginService.userId = 2;
+    //this._loginService.userId = 2;
     this.getProject(this._loginService.userId);
     // this.getParams();
 
