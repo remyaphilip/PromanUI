@@ -4,12 +4,11 @@
   <button (click)="cardForm = true">
     <h3>Add Task </h3>
   </button>
-  
-</div>
 
+</div>
 <!-- --------------------------------------------------------------------------------------------------------------- -->
 
-<div>
+<div class="dataBlock">
   <div class="list">
     <ul>
       <li *ngFor="let lis of list">
@@ -17,6 +16,45 @@
       </li>
     </ul>
   </div>
+
+
+
+  <div class="listData">
+    
+      <ul *ngFor="let card of cardList">
+        <li *ngIf="card.listId == 1">
+          {{card.summary}}
+        </li>
+      </ul>
+      <ul *ngFor="let card of cardList">
+        <li *ngIf="card.listId == 3">
+          {{card.summary}}
+        </li>
+      </ul>
+    
+    <!-- <div class="listDataBlock">
+      <ul *ngFor="let card of cardList">
+        <div>
+          <li *ngIf="card.listId == 2">{{card.summary}}</li>
+        </div>
+      </ul>
+    </div>
+    <div class="listDataBlock">
+      <ul *ngFor="let card of cardList">
+        <div>
+          <li *ngIf="card.listId == 3">{{card.summary}}</li>
+        </div>
+      </ul>
+    </div>
+    <div class="listDataBlock">
+      <ul *ngFor="let card of cardList">
+        <div>
+          <li *ngIf="card.listId == 4">{{card.summary}}</li>
+        </div>
+      </ul>
+    </div> -->
+  </div>
+
 
   <div class="card" *ngIf="cardForm">
     <div class="cardcontent">

@@ -11,6 +11,7 @@ import { environment } from '../environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({
+    'Access-Control-Allow-Origin':'*',
     'Content-Type': 'application/json'
   })
 };
@@ -23,6 +24,7 @@ export class LoginService {
   projectId: number;
   projectName: string;
   login: boolean;
+  userList: User[];
 
 
 
@@ -61,10 +63,22 @@ export class LoginService {
     return this.http.post<Card>(this.base + '/card/' + listId, card, httpOptions);
   }
 
+  getAllCardPerList(listId: number): Observable<Card[]> {
+    return this.http.get<Card[]>(this.base + '/getallcard/' + listId);
+  }
+
   AddIssue(projectId: number, issue: Issue): Observable<Issue> {
     return this.http.post<Issue>(this.base + '/issue/' + projectId, issue, httpOptions);
   }
 
+  EditIssue(issueId: number, projectId: number, issue: Issue): Observable<Issue> {
+    return this.http.post<Issue>(this.base + '/editissue/' + issueId + '/' + projectId, issue, httpOptions);
+  }
+
+  RemoveIssue(issueId: number): Observable<boolean> {
+    console.log(issueId);
+    return this.http.delete<boolean>(this.base + '/delete/' + issueId, httpOptions);
+  }
   GetAllUsers(organisation: string) {
     return this.http.get<User[]>(this.base + '/usersperorg/' + organisation);
   }

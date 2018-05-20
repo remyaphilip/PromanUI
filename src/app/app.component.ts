@@ -21,4 +21,6 @@ export class AppComponent implements OnInit {
     return (this._loginService.userId != null);
   }
 
+  
+
 }

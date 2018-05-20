@@ -13,5 +13,7 @@ export interface Issue {
     statusCode: string
     severityCode: number;
     priorityCode: string;
+    startDate: Date;
+    endDate: Date;
     projectId: number;
 }

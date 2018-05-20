@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { Project } from '../interface/project';
 import { User } from '../interface/user';
 import { ActivatedRoute, Params } from '@angular/router';
@@ -10,22 +10,25 @@ import { Issue } from '../interface/issue';
 @Component({
   selector: 'app-issue',
   templateUrl: './issue.component.html',
-  styleUrls: ['./issue.component.scss']
+  styleUrls: ['./issue.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class IssueComponent implements OnInit {
   selectedProjectId: number;
   userId: number;
   project: Project[] = [];
-  temp; temp1;temp2: any;
+  temp; temp1; temp2; temp3: any;
   issue: Issue[] = [];
   issueColumn: string[] = [];
-  insertIssue: Issue;
+  insertIssue; tempIssue: Issue;
   issueForm: boolean = false;
   form: FormGroup;
   projectList: Project[];
-  userList: User[];
+  //userList: User[];
+  issueFlag: string;
+  
 
-  constructor(private route: ActivatedRoute, private _loginService: LoginService) { }
+  constructor(private route: ActivatedRoute, private _loginService: LoginService,private cdr:ChangeDetectorRef) { }
 
   ngOnInit() {
     this.route.params.subscribe(
@@ -34,8 +37,8 @@ export class IssueComponent implements OnInit {
       }
     );
     this.form = new FormGroup({
-      projectId: new FormControl(''),
-      issueStatus: new FormControl(''),
+      projectName: new FormControl(''),
+      statusCode: new FormControl(''),
       priorityCode: new FormControl(''),
       startDate: new FormControl(''),
       endDate: new FormControl(''),
@@ -45,44 +48,71 @@ export class IssueComponent implements OnInit {
       description: new FormControl('')
     });
     this.getProject(this._loginService.userId);
-    this.getAllIssuePerUser(this._loginService.userId);
+    this.getAllIssuePerUser();
   }
 
-  getAllIssuePerUser(userId: number) {
-    this.temp = this._loginService.getAllIssuePerUser(userId).subscribe(response => {
+  getAllIssuePerUser() {
+    this.temp = this._loginService.getAllIssuePerUser(this._loginService.userId).subscribe(response => {
       this.issue = response as Issue[];
+      console.log(this.issue);
+     this.cdr.markForCheck();
     })
-    this.issueColumn = this.getIssueColumn();
   }
-
-
-  getIssueColumn(): string[] {
-    return ["issueId",
-      "title",
-      "creationDate",
-      "description",
-      "type",
-      "category",
-      "dueDate",
-      "reportedById",
-      "assignToId",
-      "estimate",
-      "timespent",
-      "statusCode",
-      "severityCode",
-      "priorityCode",
-      "projectId"]
-  }
-
 
   addIssue() {
+    if (this.issueFlag == "Edit") {
+      this.insertIssue = this.form.value as Issue;
+      this.insertIssue.reportedById = this._loginService.userId;
+      this.insertIssue.issueId = this.tempIssue.issueId;
+      this.insertIssue.projectId = this.tempIssue.projectId;
+      console.log('insertissue',this.insertIssue.statusCode);
+      console.log('formvalue',this.form.value);
+      this._loginService.EditIssue(this.insertIssue.issueId, this.insertIssue.projectId, this.insertIssue)
+      .subscribe(response => {
+        this.insertIssue = response as Issue
+        this.getAllIssuePerUser();
+        this.cdr.markForCheck();
+      });
+      console.log("in edit mode");
+     
+    }
+    else {
+      this.insertIssue = this.form.value;
+      this.insertIssue.reportedById = this._loginService.userId;
+      this.insertIssue.projectId = this.projectList.find(p => p.name == this.insertIssue.projectName).projectId;
+      this.temp2 = this._loginService.AddIssue(this.insertIssue.projectId, this.insertIssue).subscribe(response => {
+        this.insertIssue = response as Issue
+        this.getAllIssuePerUser();
+       this.cdr.markForCheck();
+      })
+    }
+  }
 
-    this.insertIssue = this.form.value;
-    this.insertIssue.reportedById = this._loginService.userId;
-    console.log(this.insertIssue);
-    this.temp2 = this._loginService.AddIssue(this.selectedProjectId, this.insertIssue).subscribe(response => {
-      this.insertIssue = response as Issue
-    })
+  editIssue(issueId: number) {
+    this.issueForm = true;
+    this.issueFlag = "Edit";
+    this.tempIssue = this.issue.find(iss => iss.issueId == issueId);
+    this.form.patchValue({
+      projectName: this.projectList.find(p => p.projectId == this.tempIssue.projectId).name,
+      statusCode: this.tempIssue.statusCode,
+      priorityCode: this.tempIssue.priorityCode,
+      startDate: this.tempIssue.startDate,
+      endDate: this.tempIssue.endDate,
+      dueDate: this.tempIssue.dueDate,
+      assignToId: this.tempIssue.assignToId,
+      summary: this.tempIssue.summary,
+      description: this.tempIssue.description
+    });
+  }
+
+  removeIssue() {
+    console.log(this.issueFlag);
+    this.temp3 = this._loginService.RemoveIssue(this.tempIssue.issueId)
+      .subscribe(response => {
+        console.log(response)
+        this.getAllIssuePerUser();
+       this.cdr.markForCheck();
+      });
   }
 
   getProject(userId: number) {
@@ -92,16 +122,25 @@ export class IssueComponent implements OnInit {
       });
 
   }
-
-  getAllUserPerProject() {
-    console.log('test',this.selectedProjectId);
-    this.temp1 = this._loginService.getAllUserPerProject(this.selectedProjectId).subscribe(response => {
-      this.userList = response as User[];
-    })
+  setIssueFlagAddIssue() {
+    this.issueFlag = "Add";
+    this.issueForm = true;
+    this.form.reset();
   }
-  onChange(selectedProjectId: number){
-    this.selectedProjectId = selectedProjectId;
-    this.getAllUserPerProject();
+  setIssueForm() {
+    this.issueFlag = "";
+    this.issueForm = false;
+    this.tempIssue = {} as Issue;
   }
+  // getAllUserPerProject() {
+  //   console.log('test', this.selectedProjectId);
+  //   this.temp1 = this._loginService.getAllUserPerProject(this.selectedProjectId).subscribe(response => {
+  //     this.userList = response as User[];
+  //   })
+  // }
+  // onChange(selectedProjectId: number) {
+  //   this.selectedProjectId = selectedProjectId;
+  //   this.getAllUserPerProject();
+  // }
 
 }

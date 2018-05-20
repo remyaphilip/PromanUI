@@ -5,19 +5,39 @@
         <a>Track Issue</a>
       </li>
     </ul>
-    <button (click)="issueForm = true">
+    <button (click)="setIssueFlagAddIssue()">
       <h3>Add Issue </h3>
     </button>
   </div>
   <div *ngIf="!issueForm">
-    <table>
-      <tr>
-        <th *ngFor="let col of issueColumn">{{col}}</th>
-      </tr>
-      <tr *ngFor="let iss of issue">
-        <td *ngFor="let col of issueColumn">{{iss[col]}}</td>
-      </tr>
-    </table>
+    <div class="issues">
+      <ul>
+        <li class="issueHeader">
+          <div class="userIcon">
+            <input type="checkbox">
+          </div>
+        
+            <div class="userInfo">
+              <div class="userInfoName">Issue</div>
+            </div>
+            <div class="userStatus">Current Status</div>
+            <div class="userRole">Due Date</div>
+          
+        </li>
+        <li *ngFor="let iss of issue" (click)="editIssue(iss.issueId)">
+          <div class="userIcon">
+            <input type="checkbox">
+          </div>
+
+          <div class="userInfo">
+            <div class="userInfoName">{{iss.issueId}} - {{iss.summary}}</div>
+          </div>
+          <div class="userStatus">{{iss.statusCode}}</div>
+          <div class="userRole">{{iss.dueDate | date}}</div>
+
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
 
@@ -25,13 +45,16 @@
   <div class="issuecontent">
     <form class="issueForm" novalidate [formGroup]="form" (ngSubmit)="addIssue(form.value)">
       <div class="issueHead">
-        <h3 style="float:left">Log Issue</h3>
+        <h3 *ngIf="issueFlag == 'Add'" style="float:left">Log Issue</h3>
+        <h3 *ngIf="issueFlag == 'Edit'" style="float:left">Issue Id : {{tempIssue.issueId}} </h3>
         <div class="right-head">
           <button type="submit">
             <img src="./assets/img/floppy-disk.svg">
           </button>
-          <img src="./assets/img/rubbish-bin-delete-button.svg">
-          <button (click)="issueForm=false">
+          <button [disabled]="this.issueFlag == 'Add'" (click)="removeIssue()">
+            <img src="./assets/img/rubbish-bin-delete-button.svg">
+          </button>
+          <button (click)="setIssueForm()">
             <img src="./assets/img/multiply.svg">
           </button>
         </div>
@@ -39,8 +62,8 @@
       <div class="issueContent">
         <div class="block1">
           <div>
-            <label for="issueStatus">Status</label>
-            <select id="issueStatus" formControlName="issueStatus">
+            <label for="statusCode">Status</label>
+            <select id="statusCode" formControlName="statusCode">
               <option>Select Issue Status</option>
               <option>Open</option>
               <option>In Progress</option>
@@ -49,22 +72,14 @@
             </select>
           </div>
 
-          <div class="issuePriority">
-            <label for="issuePriority">Priority</label>
-            <select id="issuePriority" formControlName="priorityCode">
-              <option>Select Priority</option>
-              <option>Low</option>
-              <option>High</option>
-            </select>
-          </div>
         </div>
         <br>
         <div class="block1">
           <div>
             <label for="Select Project">Select Project</label>
-            <select id="selectProject" (change) = "onChange($event.target.value)">
+            <select id="selectProject" formControlName="projectName">
               <option>Select Project </option>
-              <option *ngFor="let project of projectList" [value] = "project.projectId">{{project.name}}</option>
+              <option *ngFor="let project of projectList" [value]="project.name">{{project.name}}</option>
             </select>
           </div>
 
@@ -98,9 +113,9 @@
 
           <div>
             <label for="assignToId">Assign to</label>
-            <select formControlName=assignToId id="assignToId" (click) = "getAllUserPerProject()">
+            <select formControlName=assignToId id="assignToId">
               <option>Select assignee</option>
-              <option *ngFor="let user of userList" [value]="user.userId">{{user.userName}}</option>
+              <option *ngFor="let user of _loginService.userList" [value]="user.userId">{{user.userName}}</option>
             </select>
           </div>
         </div>
