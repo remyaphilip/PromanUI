@@ -16,13 +16,13 @@
           <div class="userIcon">
             <input type="checkbox">
           </div>
-        
-            <div class="userInfo">
-              <div class="userInfoName">Issue</div>
-            </div>
-            <div class="userStatus">Current Status</div>
-            <div class="userRole">Due Date</div>
-          
+
+          <div class="userInfo">
+            <div class="userInfoName">Issue</div>
+          </div>
+          <div class="userStatus">Current Status</div>
+          <div class="userRole">Due Date</div>
+
         </li>
         <li *ngFor="let iss of issue" (click)="editIssue(iss.issueId)">
           <div class="userIcon">
