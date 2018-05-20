@@ -35,21 +35,70 @@
   }
 }
 
-table {
-  border: 1px solid grey;
-  border-collapse: collapse;
-  padding: 5px;
+.issues {
+  overflow: auto;
   width: 100%;
-  th {
-    border: 1px solid grey;
-    border-collapse: collapse;
-    padding: 5px;
+  display: flex;
+  ul {
+    list-style: none;
+    box-sizing: border-box;
+    background-color: white;
+    font-size: 14px;
+    width: 100%;
+    li {
+      &:hover {
+        background-color: #e4e1e1a3;
+      }
+      div {                          //class usericon
+        input[type="checkbox"] {
+          margin: 2px;
+          box-shadow: none;
+        }
+      }
+      
+
+      box-sizing: border-box;
+      display: flex;
+      padding: 5px;
+      border-bottom: 1px solid #ddd;
+      -webkit-box-align: center;
+      align-items: center;
+      
+    }
   }
-  td {
-    border: none;
-    border-collapse: collapse;
-    padding: 5px;
+}
+
+.issueHeader {
+  background: #8c8e8f;
+  color: white;
+  padding: 10px; //  &:hover {
+  pointer-events: none; // }
+}
+
+.userInfo {
+  -webkit-box-flex: 1;
+  flex: 1 1 auto;
+  line-height: 22px;
+  margin-right: 10px;
+  div {
+    max-width: 400px;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
+}
+
+.userStatus {
+  width: 50px;
+  flex-shrink: 0;
+  flex: 0 0 150px;
+  -webkit-box-flex: 0;
+}
+
+.userRole {
+  margin-right: 80px;
+  -webkit-box-flex: 0;
+  text-align: left;
+  flex: 0 0 94px;
 }
 
 .issue {
@@ -69,6 +118,10 @@ table {
   button {
     border: none;
     background: none;
+    :disabled {
+      pointer-events: none;
+      background-color: rgb(134, 37, 134);
+    }
   }
   img {
     width: 16px;
@@ -84,7 +137,7 @@ table {
   padding: 2px;
   label {
     display: block;
-    width: 100px;
+    width: 123px;
     float: left;
   }
   input[type],
@@ -122,7 +175,7 @@ table {
   padding: 10px;
   float: left;
   input[type="text"] {
-    width: 90%;
+    width: 88%;
   }
 }
 

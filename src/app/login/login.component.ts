@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
   user;
   email;
   passwordHash;
+  temp: any;
 
   constructor(private _loginService: LoginService,
     private router: Router) {
@@ -30,9 +31,16 @@ export class LoginComponent implements OnInit {
         this._loginService.userId = this.user.userId;
         this._loginService.organisation = this.user.organisation;
         this._loginService.login = false;
-        console.log(this.user);
-        console.log(this._loginService.organisation);
+        this.getAllUsers();
         this.router.navigate(['login']);
+      });
+  }
+
+  getAllUsers() {
+    this.temp = this._loginService.GetAllUsers(this._loginService.organisation)
+      .subscribe(response => {
+        this._loginService.userList = response as User[];
+        console.log(this._loginService.userList);
       });
   }
 }
