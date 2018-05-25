@@ -33,6 +33,7 @@ import { ProjectItemComponent } from './project-item/project-item.component';
 import { OutletComponent } from './outlet/outlet.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { UserComponent } from './user/user.component';
+import { OrderModule } from 'ngx-order-pipe';
 
 
 
@@ -71,6 +72,7 @@ import { UserComponent } from './user/user.component';
     MatSidenavModule,
     FormsModule,
     ReactiveFormsModule,
+    OrderModule,
     RouterModule.forRoot([
 
       { path: 'home', component: HomeComponent },

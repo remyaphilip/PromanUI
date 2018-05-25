@@ -5,6 +5,11 @@
         <a>Track Issue</a>
       </li>
     </ul>
+    <span>
+      <button class="export" (click)="generateCsv()">
+        <img src="./assets/img/export.svg">
+      </button>
+    </span>
     <button (click)="setIssueFlagAddIssue()">
       <h3>Add Issue </h3>
     </button>
@@ -14,27 +19,36 @@
       <ul>
         <li class="issueHeader">
           <div class="userIcon">
-            <input type="checkbox">
+            <input type="checkbox" (change)="checkboxEvent($event,1.1)" [checked]="checkAll">
           </div>
-
-          <div class="userInfo">
-            <div class="userInfoName">Issue</div>
+          <div class="level2">
+            <div class="userInfo">
+              <div class="userInfoName" [class.active]="order === 'issue.issueId'" (click)="setOrder('issue.issueId')">Issue
+                <span [hidden]="reverse">▼</span>
+                <span [hidden]="!reverse">▲</span>
+              </div>
+            </div>
+            <div class="userStatus" [class.active]="order === 'issue.statusCode'" (click)="setOrder('issue.statusCode')">Current Status
+              <span [hidden]="reverse">▼</span>
+              <span [hidden]="!reverse">▲</span>
+            </div>
+            <div class="userRole" [class.active]="order === 'issue.dueDate'" (click)="setOrder('issue.dueDate')">Due Date
+              <span [hidden]="reverse">▼</span>
+              <span [hidden]="!reverse">▲</span>
+            </div>
           </div>
-          <div class="userStatus">Current Status</div>
-          <div class="userRole">Due Date</div>
-
         </li>
-        <li *ngFor="let iss of issue" (click)="editIssue(iss.issueId)">
+        <li *ngFor="let iss of issue | orderBy:order:reverse:'case-insensitive'">
           <div class="userIcon">
-            <input type="checkbox">
+            <input type="checkbox" (change)="checkboxEvent($event,iss.issueId)" [checked]="checkAll">
           </div>
-
-          <div class="userInfo">
-            <div class="userInfoName">{{iss.issueId}} - {{iss.summary}}</div>
+          <div class="level2" (click)="editIssue(iss.issueId)">
+            <div class="userInfo">
+              <div class="userInfoName">{{iss.issueId}} - {{iss.summary}}</div>
+            </div>
+            <div class="userStatus">{{iss.statusCode}}</div>
+            <div class="userRole">{{iss.dueDate | date:'dd-MMM-yyyy'}}</div>
           </div>
-          <div class="userStatus">{{iss.statusCode}}</div>
-          <div class="userRole">{{iss.dueDate | date}}</div>
-
         </li>
       </ul>
     </div>
@@ -129,10 +143,14 @@
           <div>
             <label for="description">Description</label>
           </div>
-          <button>
-            <img src="./assets/img/attachment.svg" class="attachIcon">Attach
-          </button>
           <textarea id="description" formControlName="description" rows="12"></textarea>
+          <br>
+          <input #fileInput type="file" [multiple] = "true" (change)="onFileSelectedEvent($event)">
+          <!-- <button>
+            <img src="./assets/img/attachment.svg" class="attachIcon">Choose file
+          </button> -->
+          <br>
+          <br>
         </div>
       </div>
     </form>

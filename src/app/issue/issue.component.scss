@@ -21,18 +21,35 @@
       }
     }
   }
+  span {
+    button {
+      position: fixed;
+      right: 2.4%;
+      top: 12%;
+      background: none;
+      img {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
   button {
     color: white;
     border: none;
     position: fixed;
-    right: .8%;
-    top: 11%;
+    right: 4%;
+    top: 12%;
     background: none;
     h3 {
       position: none;
       font-family: Cambria, Georgia;
     }
   }
+}
+
+.export {
+  position: fixed;
+  right: 10%;
 }
 
 .issues {
@@ -49,33 +66,46 @@
       &:hover {
         background-color: #e4e1e1a3;
       }
-      div {                          //class usericon
+      div {
+        //class usericon
         input[type="checkbox"] {
           margin: 2px;
           box-shadow: none;
         }
       }
-      
-
       box-sizing: border-box;
       display: flex;
       padding: 5px;
       border-bottom: 1px solid #ddd;
       -webkit-box-align: center;
       align-items: center;
-      
     }
   }
 }
 
+.level2 {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  width: 100%;
+}
+
 .issueHeader {
-  background: #8c8e8f;
-  color: white;
+  //background: #8c8e8f;
+  background: white;
+  color: black;
   padding: 10px; //  &:hover {
   pointer-events: none; // }
+  border-bottom: 2.5px #8c8e8f;
+}
+
+.userIcon {
+  pointer-events: all;
 }
 
 .userInfo {
+  pointer-events: all;
+  cursor: pointer;
   -webkit-box-flex: 1;
   flex: 1 1 auto;
   line-height: 22px;
@@ -85,20 +115,54 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
+
 }
 
+.userInfoName{
+  span {
+    visibility: hidden;
+  }
+  &.active {
+    color: #000;
+    span {
+      visibility: visible;
+    }
+  }
+}
 .userStatus {
+  pointer-events: all;
+  cursor: pointer;
   width: 50px;
   flex-shrink: 0;
   flex: 0 0 150px;
   -webkit-box-flex: 0;
+  span {
+    visibility: hidden;
+  }
+  &.active {
+    color: #000;
+    span {
+      visibility: visible;
+    }
+  }
 }
 
 .userRole {
+  pointer-events: fill;
+  cursor: pointer;
   margin-right: 80px;
   -webkit-box-flex: 0;
   text-align: left;
   flex: 0 0 94px;
+  span {
+    visibility: hidden;
+  }
+  &.active {
+    color: #000;
+    span {
+      visibility: visible;
+    }
+  }
 }
 
 .issue {
@@ -182,14 +246,16 @@
 .description {
   padding-left: 10px;
   button {
-    border: none;
+    border: 1px;
+    padding-right: 1px;
     background: none;
     position: fixed;
-    left: 93%;
-    top: 48%;
+   // left: 93%;
+   // top: 50%;
     font-size: 16px;
   }
   img {
+    //padding: 1px;
     width: 16px;
     height: 16px;
   }
