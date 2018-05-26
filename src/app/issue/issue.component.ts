@@ -235,15 +235,13 @@ export class IssueComponent implements OnInit {
     this.order = value;
   }
 
-  upLoad() {
-    let inputEl: HTMLInputElement = this.inputEl.nativeElement;
-    let filecount: number = inputEl.files.length;
-    let formData = new FormData();
-    if (filecount > 0) {
-      for (let i = 0; filecount > 0; i++)
-        formData.append('file[]', inputEl.files.item(i));
+  upLoad(files: FileList) {
+    console.log(files.length)
+    //  this.issueService.uploadFiles(
+    //    {
+    //      files: files
+    //    }
+    // )
     }
-
-    console.log(formData);
-  }
+   
 }

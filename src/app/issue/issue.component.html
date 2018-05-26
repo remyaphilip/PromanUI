@@ -145,7 +145,7 @@
           </div>
           <textarea id="description" formControlName="description" rows="12"></textarea>
           <br>
-          <input #fileInput type="file" [multiple] = "true" (change)="onFileSelectedEvent($event)">
+          <input #fileInput type="file" name="fileInput" [multiple]="true" (change)="upLoad($event.target.files)">
           <!-- <button>
             <img src="./assets/img/attachment.svg" class="attachIcon">Choose file
           </button> -->
