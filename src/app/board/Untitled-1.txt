@@ -1,0 +1,40 @@
+
+
+
+export interface CardList {
+    id:
+    name:todo
+    cards: Card[]{
+    }
+    }
+}
+
+component  {
+
+    lists : cardList[]
+
+    getlists(boardId){
+        list = new list
+        for(listres of response.each) {
+            list.name = listres.name
+            list.id = listres.id
+            getCards(dfasfasdfa){
+                list.cards = response
+            }            
+        }
+
+    }
+
+}
+
+
+
+<div *ngFor=" list in lists" style="width:25%;">
+    <div > {{list.name}}<>
+        <div *ngFor="card in list.cards" class="card">
+            {{cards.name}}
+        <>
+</div>
+
+
+

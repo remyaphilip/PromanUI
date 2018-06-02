@@ -236,12 +236,20 @@ export class IssueComponent implements OnInit {
   }
 
   upLoad(files: FileList) {
-    console.log(files.length)
+
+    //let formdata: FormData = new FormData();
+    //for (let i = 0; i < files.length; i++)
+    //formdata.append('fileList',files.item(i));
+    console.log("here")
+    this._loginService.UpLoadFile(files);
+   // console.log(formdata.getAll('fileList'));
+    // for (let i = 0; i < files.length; i++)
+    //   console.log(files.item(i));
     //  this.issueService.uploadFiles(
     //    {
     //      files: files
     //    }
     // )
-    }
-   
+  }
+
 }

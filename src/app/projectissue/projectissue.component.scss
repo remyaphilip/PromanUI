@@ -1,20 +1,44 @@
-.navBar {
-  height: 30px;
-  background-color: rgba(170, 160, 145, 0.68);
-  h3 {
-    position: fixed;
-    top: 14.4%;
-    padding-left: 5px;
-    padding-right: 5px;
-    color: white;
-    font-family: Cambria, Georgia;
+.topBar {
+  ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+    background-color: rgb(201, 201, 201);
+    position: -webkit-sticky;
+    top: 0;
+    li {
+      float: left;
+    }
+    li a {
+      display: block;
+      color: #333;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      &:hover {
+        background-color: #aaa5a5a3;
+      }
+    }
+  }
+  span {
+    button {
+      position: fixed;
+      right: 2.4%;
+      top: 17%;
+      background: none;
+      img {
+        width: 20px;
+        height: 20px;
+      }
+    }
   }
   button {
     color: white;
     border: none;
     position: fixed;
-    right: 5.8%;
-    top: 15.2%;
+    right: 4%;
+    top: 17%;
     background: none;
     h3 {
       position: none;
@@ -23,31 +47,126 @@
   }
 }
 
-table {
-  //border: 1px solid grey;
-  border-collapse: collapse;
-  padding: 5px;
+.export {
+  position: fixed;
+  right: 10%;
+}
+
+.issues {
+  overflow: auto;
   width: 100%;
-  text-align: left;
-  th {
-    border: none;
-    border-collapse: collapse;
-    padding: 5px;
-    background-color: #7A7A7C;
-    color: white;
+  display: flex;
+  ul {
+    list-style: none;
     box-sizing: border-box;
-  }
-  td {
-    box-sizing: border-box;
-    border: none;
-    border-collapse: collapse;
-    padding: 5px;
     background-color: white;
+    font-size: 14px;
+    width: 100%;
+    li {
+      &:hover {
+        background-color: #e4e1e1a3;
+      }
+      div {
+        //class usericon
+        input[type="checkbox"] {
+          margin: 2px;
+          box-shadow: none;
+        }
+      }
+      box-sizing: border-box;
+      display: flex;
+      padding: 5px;
+      border-bottom: 1px solid #ddd;
+      -webkit-box-align: center;
+      align-items: center;
+    }
+  }
+}
+
+.level2 {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  width: 100%;
+}
+
+.issueHeader {
+  //background: #8c8e8f;
+  background: white;
+  color: black;
+  padding: 10px; //  &:hover {
+  pointer-events: none; // }
+  border-bottom: 2.5px #8c8e8f;
+}
+
+.userIcon {
+  pointer-events: all;
+}
+
+.userInfo {
+  pointer-events: all;
+  cursor: pointer;
+  -webkit-box-flex: 1;
+  flex: 1 1 auto;
+  line-height: 22px;
+  margin-right: 10px;
+  div {
+    max-width: 400px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+}
+
+.userInfoName{
+  span {
+    visibility: hidden;
+  }
+  &.active {
+    color: #000;
+    span {
+      visibility: visible;
+    }
+  }
+}
+.userStatus {
+  pointer-events: all;
+  cursor: pointer;
+  width: 50px;
+  flex-shrink: 0;
+  flex: 0 0 150px;
+  -webkit-box-flex: 0;
+  span {
+    visibility: hidden;
+  }
+  &.active {
+    color: #000;
+    span {
+      visibility: visible;
+    }
+  }
+}
+
+.userRole {
+  pointer-events: fill;
+  cursor: pointer;
+  margin-right: 80px;
+  -webkit-box-flex: 0;
+  text-align: left;
+  flex: 0 0 94px;
+  span {
+    visibility: hidden;
+  }
+  &.active {
+    color: #000;
+    span {
+      visibility: visible;
+    }
   }
 }
 
 .issue {
-   background-color: white;
+  background-color: white;
   overflow: auto;
 }
 
@@ -63,6 +182,10 @@ table {
   button {
     border: none;
     background: none;
+    :disabled {
+      pointer-events: none;
+      background-color: rgb(134, 37, 134);
+    }
   }
   img {
     width: 16px;
@@ -78,7 +201,7 @@ table {
   padding: 2px;
   label {
     display: block;
-    width: 100px;
+    width: 123px;
     float: left;
   }
   input[type],
@@ -116,21 +239,173 @@ table {
   padding: 10px;
   float: left;
   input[type="text"] {
-    width: 90%;
+    width: 88%;
   }
 }
 
 .description {
   padding-left: 10px;
   button {
-    border: none;
+    border: 1px;
+    padding-right: 1px;
     background: none;
     position: fixed;
-    left: 96%;
-    top: 45.5%;
+   // left: 93%;
+   // top: 50%;
+    font-size: 16px;
   }
   img {
+    //padding: 1px;
     width: 16px;
     height: 16px;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+// .navBar {
+//   height: 30px;
+//   background-color: rgba(170, 160, 145, 0.68);
+//   h3 {
+//     position: fixed;
+//     top: 14.4%;
+//     padding-left: 5px;
+//     padding-right: 5px;
+//     color: white;
+//     font-family: Cambria, Georgia;
+//   }
+//   button {
+//     color: white;
+//     border: none;
+//     position: fixed;
+//     right: 5.8%;
+//     top: 15.2%;
+//     background: none;
+//     h3 {
+//       position: none;
+//       font-family: Cambria, Georgia;
+//     }
+//   }
+// }
+
+// table {
+//   //border: 1px solid grey;
+//   border-collapse: collapse;
+//   padding: 5px;
+//   width: 100%;
+//   text-align: left;
+//   th {
+//     border: none;
+//     border-collapse: collapse;
+//     padding: 5px;
+//     background-color: #7A7A7C;
+//     color: white;
+//     box-sizing: border-box;
+//   }
+//   td {
+//     box-sizing: border-box;
+//     border: none;
+//     border-collapse: collapse;
+//     padding: 5px;
+//     background-color: white;
+//   }
+// }
+
+// .issue {
+//    background-color: white;
+//   overflow: auto;
+// }
+
+// .issueHead {
+//   background-color: #F3F3F3;
+//   width: 100%;
+//   padding-top: 10px;
+//   padding-bottom: 10px;
+//   padding-left: 0px;
+//   h3 {
+//     padding-left: 8px;
+//   }
+//   button {
+//     border: none;
+//     background: none;
+//   }
+//   img {
+//     width: 16px;
+//     height: 16px;
+//   }
+// }
+
+// .right-head {
+//   margin-left: 93.5%;
+// }
+
+// .issuecontent {
+//   padding: 2px;
+//   label {
+//     display: block;
+//     width: 100px;
+//     float: left;
+//   }
+//   input[type],
+//   select {
+//     width: 300px;
+//   }
+//   textarea {
+//     overflow-y: auto;
+//     height: 200px;
+//     width: 97%;
+//     margin-right: 5px;
+//   }
+// }
+
+// .issueContent {
+//   padding-top: 15px;
+// }
+
+// .projectissue {
+//   margin-top: 10px;
+// }
+
+// .block1 {
+//   box-sizing: border-box;
+//   padding: 10px;
+//   div {
+//     width: 50%;
+//     float: left;
+//   }
+// }
+
+// .summary {
+//   box-sizing: border-box;
+//   width: 100%;
+//   padding: 10px;
+//   float: left;
+//   input[type="text"] {
+//     width: 90%;
+//   }
+// }
+
+// .description {
+//   padding-left: 10px;
+//   button {
+//     border: none;
+//     background: none;
+//     position: fixed;
+//     left: 96%;
+//     top: 45.5%;
+//   }
+//   img {
+//     width: 16px;
+//     height: 16px;
+//   }
+// }

@@ -11,7 +11,7 @@ import { environment } from '../environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Access-Control-Allow-Origin':'*',
+    'Access-Control-Allow-Origin': '*',
     'Content-Type': 'application/json'
   })
 };
@@ -81,5 +81,10 @@ export class LoginService {
   }
   GetAllUsers(organisation: string) {
     return this.http.get<User[]>(this.base + '/usersperorg/' + organisation);
+  }
+
+  UpLoadFile(files: FileList): Observable<boolean> {
+    
+    return this.http.post<boolean>(this.base + '/upload', files, httpOptions);
   }
 }
