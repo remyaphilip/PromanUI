@@ -16,7 +16,7 @@ import { NgSwitch } from '@angular/common';
 })
 export class BoardComponent implements OnInit {
 
-  list: List[] = [];
+  list; lists: List[] = [];
   userList: User[] = [];
   card = <Card>{};
   x: Card[] = [];
@@ -80,7 +80,14 @@ export class BoardComponent implements OnInit {
       this.list = <List[]>response;
       this.getAllCardPerList()
     })
+    this.getlist();
+  }
 
+  getlist() {
+    this._loginService.getlist(this._loginService.projectId).subscribe(response => {
+      this.lists = <List[]>response;
+      console.log(this.lists);
+    })
   }
   getProjectIssue() {
     this.boardFlag = false;
@@ -91,12 +98,12 @@ export class BoardComponent implements OnInit {
   getAllCardPerList() {
     this.list.forEach(element => {
       this._loginService.getAllCardPerList(element.listId).subscribe(response => {
-        
+
         this.x = <Card[]>response;
         this.x.forEach(e => {
           e.listId = element.listId;
         })
-        
+
         this.cardList = this.cardList.concat(this.x);
         console.log(this.cardList);
       })

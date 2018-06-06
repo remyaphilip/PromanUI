@@ -1,16 +1,66 @@
-<div>
-  <ul class="projectMenu">
+<div class="projectMenu">
+  <ul>
     <li>
       <a>Project Listing</a>
     </li>
   </ul>
+  <button class="addProject" (click)="setProjectForm()">
+    <h3>Add Project </h3>
+  </button>
 </div>
-<table>
-  <tr>
-    <th *ngFor="let col of projectColumn">{{col}}</th>
-  </tr>
-  <tr *ngFor="let pro of projectList; let i = index" (click)="setProject(pro.projectId)">
-    <td *ngFor="let col of projectColumn">{{pro[col]}}</td>
-  </tr>
-</table>
 
+
+<div class="projects">
+  <ul>
+    <li *ngFor="let pro of projectList" (click)="setProject(pro.projectId)">
+      <!-- <div class="userIcon">
+        <img src="./assets/img/round-account-button-with-user-inside.svg">
+      </div> -->
+      <div class="userInfo">
+        <div class="projectName">{{pro.name}}</div>
+        <!-- <div class="userInfoEmail">{{user.email}}</div> -->
+      </div>
+      <div class="userStatus"></div>
+      <!-- <div class="userRole">{{user.userRole}}</div> -->
+      <div class="userActions">
+        <div class="dropDownIcon">
+          <button>...
+            <!-- <img src="./assets/img/more.svg"> -->
+          </button>
+          <div class="dropDownContent">
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div class="modal_container" *ngIf="projectForm">
+  <div class="background" (click)="projectForm=false"></div>
+  <div class="modal">
+    <div class="modal_content">
+      <form [formGroup]="form" (ngSubmit)="addProject(form.value)">
+        <header>
+          <h1> Create a new project</h1>
+        </header>
+        <div class="form_modal_content">
+          <div class="form-modal-section">
+            <div class="name">
+              <label for="name">Project Name
+                <input #projectname formControlName="name" type="text" id="name">
+              </label>
+            </div>
+          </div>
+          <footer class="modal-footer">
+            <button class="cancelbutton" (click)="projectForm=false">
+              Cancel
+            </button>
+            <button type="submit" class="createbutton">
+              Create
+            </button>
+          </footer>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

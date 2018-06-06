@@ -11,6 +11,8 @@ export class UserComponent implements OnInit {
 
   temp: any;
   userList: User[];
+  userFlag: string;
+  userForm: boolean;
   constructor(private _loginService: LoginService) { }
 
   ngOnInit() {
@@ -23,5 +25,10 @@ export class UserComponent implements OnInit {
         this.userList = response as User[];
         console.log(this.userList);
       });
+  }
+  setUserFlagAddUser() {
+    this.userFlag = "Add";
+    this.userForm = true;
+   // this.form.reset();
   }
 }

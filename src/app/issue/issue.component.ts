@@ -131,7 +131,7 @@ export class IssueComponent implements OnInit {
   }
 
   getProject(userId: number) {
-    this._loginService.getProjectPerUser(userId)
+    this._loginService.getProjectPerOrg(this._loginService.organisation)
       .subscribe(response => {
         this.projectList = <Project[]>response;
       });

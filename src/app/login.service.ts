@@ -35,8 +35,8 @@ export class LoginService {
     return this.http.get<User>(this.base + '/user/' + email + '/' + passwordHash);
   }
 
-  getProjectPerUser(userId: number): Observable<Project[]> {
-    return this.http.get<Project[]>(this.base + '/userproject/' + userId);
+  getProjectPerOrg(organisation: string): Observable<Project[]> {
+    return this.http.get<Project[]>(this.base + '/project/' + organisation);
   }
 
   getAllUserPerProject(projectId: number): Observable<User[]> {
@@ -49,6 +49,9 @@ export class LoginService {
 
   getList(boardId: number) {
     return this.http.get<List[]>(this.base + '/board/' + boardId + '/list');
+  }
+  getlist(projectId: number) {
+    return this.http.get<List[]>(this.base + '/projectId/' + projectId);
   }
 
   getIssue(projectId: number) {
@@ -84,7 +87,10 @@ export class LoginService {
   }
 
   UpLoadFile(files: FileList): Observable<boolean> {
-    
-    return this.http.post<boolean>(this.base + '/upload', files, httpOptions);
+
+    return this.http.post<boolean>(this.base + '/upload', files);
+  }
+  AddProject(project: Project){
+    return this.http.post<boolean>(this.base +'/newproject',project,httpOptions);
   }
 }
