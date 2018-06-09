@@ -14,33 +14,33 @@ export class LoginComponent implements OnInit {
   passwordHash;
   temp: any;
 
-  constructor(private _loginService: LoginService,
+  constructor(private loginService: LoginService,
     private router: Router) {
-    this._loginService.login = true;
+    this.loginService.login = true;
   }
 
 
   ngOnInit() {
-    this._loginService.login = true;
+    this.loginService.login = true;
   }
 
   onLogin(email: string, passwordHash: string) {
-    this._loginService.getLogin(email, passwordHash)
+    this.loginService.getLogin(email, passwordHash)
       .subscribe((response: User) => {
         this.user = response;
-        this._loginService.userId = this.user.userId;
-        this._loginService.organisation = this.user.organisation;
-        this._loginService.login = false;
+        this.loginService.userId = this.user.userId;
+        this.loginService.organisation = this.user.organisation;
+        this.loginService.login = false;
         this.getAllUsers();
         this.router.navigate(['login']);
       });
   }
 
   getAllUsers() {
-    this.temp = this._loginService.GetAllUsers(this._loginService.organisation)
+    this.temp = this.loginService.GetAllUsers(this.loginService.organisation)
       .subscribe(response => {
-        this._loginService.userList = response as User[];
-        console.log(this._loginService.userList);
+        this.loginService.userList = response as User[];
+        console.log(this.loginService.userList);
       });
   }
 }

@@ -25,22 +25,22 @@ export class ProjectComponent {
   form: FormGroup;
   project: Project;
 
-  constructor(private router: Router, private _loginService: LoginService) {
+  constructor(private router: Router, private loginService: LoginService) {
 
   }
   ngOnInit(): void {
-    //this._loginService.userId = 2;
+    //this.loginService.userId = 2;
     
     this.form = new FormGroup({
       name: new FormControl('')
     });
-    this.getProject(this._loginService.userId);
+    this.getProject(this.loginService.userId);
     // this.getParams();
 
   }
 
   getProject(userId: number) {
-    this._loginService.getProjectPerOrg(this._loginService.organisation)
+    this.loginService.getProjectPerOrg(this.loginService.organisation)
       .subscribe(response => {
         this.projectList = <Project[]>response;
         this.projectColumn = this.getProjectColumn();
@@ -53,8 +53,8 @@ export class ProjectComponent {
   }
 
   setProject(projectId: number) {
-    this._loginService.projectId = projectId;
-    this._loginService.projectName = this.projectList.find(p => p.projectId == projectId).name;
+    this.loginService.projectId = projectId;
+    this.loginService.projectName = this.projectList.find(p => p.projectId == projectId).name;
     this.boardFlag = true;
     this.router.navigate(['projectitem', this.boardFlag]);
 
@@ -65,9 +65,9 @@ export class ProjectComponent {
   }
   addProject(){
    this.project=this.form.value;
-   this.project.organisation = this._loginService.organisation;
+   this.project.organisation = this.loginService.organisation;
    console.log(this.project);
-   this._loginService.AddProject(this.project).subscribe(res => {
+   this.loginService.AddProject(this.project).subscribe(res => {
      console.log(res)
    });
   }

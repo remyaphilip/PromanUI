@@ -57,7 +57,7 @@
 
 <div class="issue" *ngIf="issueForm">
   <div class="issuecontent">
-    <form class="issueForm" novalidate [formGroup]="form" (ngSubmit)="addIssue(form.value)">
+    <form class="issueForm" novalidate [formGroup]="form" (ngSubmit)="addUser(form.value)">
       <div class="issueHead">
         <h3 *ngIf="issueFlag == 'Add'" style="float:left">Log Issue</h3>
         <h3 *ngIf="issueFlag == 'Edit'" style="float:left">Issue Id : {{tempIssue.issueId}} </h3>
@@ -129,7 +129,7 @@
             <label for="assignToId">Assign to</label>
             <select formControlName=assignToId id="assignToId">
               <option>Select assignee</option>
-              <option *ngFor="let user of _loginService.userList" [value]="user.userId">{{user.userName}}</option>
+              <option *ngFor="let user of loginService.userList" [value]="user.userId">{{user.userName}}</option>
             </select>
           </div>
         </div>

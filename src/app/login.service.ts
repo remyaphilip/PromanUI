@@ -90,7 +90,17 @@ export class LoginService {
 
     return this.http.post<boolean>(this.base + '/upload', files);
   }
-  AddProject(project: Project){
-    return this.http.post<boolean>(this.base +'/newproject',project,httpOptions);
+  AddProject(project: Project) {
+    return this.http.post<boolean>(this.base + '/newproject', project, httpOptions);
+  }
+
+  AddUser(user: User) {
+    return this.http.post<boolean>(this.base + '/newuser/', user, httpOptions);
+  }
+  EditUser(userId: number, user: User) {
+    return this.http.post<boolean>(this.base + '/edituser/' + userId, user, httpOptions);
+  }
+  RemoveUser(userId: number) {
+    return this.http.delete<boolean>(this.base + '/removeuser/' +userId, httpOptions)
   }
 }

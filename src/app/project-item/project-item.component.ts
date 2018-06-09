@@ -27,12 +27,12 @@ export class ProjectItemComponent implements OnInit {
   boardFlag: boolean = true;
 
 
-  constructor(private _loginService: LoginService, private route: ActivatedRoute) {
+  constructor(private loginService: LoginService, private route: ActivatedRoute) {
 
   }
 
   ngOnInit() {
-    this.projectName = this._loginService.projectName;
+    this.projectName = this.loginService.projectName;
     console.log(this.projectName);
     this.getParams();
   }
@@ -49,7 +49,7 @@ export class ProjectItemComponent implements OnInit {
 
   // getIssue() {
   //   this.menuItem = 1;
-  //   this.temp2 = this._loginService.getIssue(this._loginService.projectId).subscribe(response => {
+  //   this.temp2 = this.loginService.getIssue(this.loginService.projectId).subscribe(response => {
   //     this.issue = <Issue[]>response;
   //     // console.log(this.project.projectId, 'test', this.issue);
   //   })

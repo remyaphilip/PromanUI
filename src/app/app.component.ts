@@ -9,16 +9,16 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private _loginService: LoginService, private router: Router) {
-    //this._loginService.login = true;
+  constructor(private loginService: LoginService, private router: Router) {
+    //this.loginService.login = true;
   }
 
   ngOnInit() {
-   // this._loginService.login = true;
+   // this.loginService.login = true;
   }
 
   loggedIn(): boolean {
-    return (this._loginService.userId != null);
+    return (this.loginService.userId != null);
   }
 
   

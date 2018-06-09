@@ -129,7 +129,7 @@
             <label for="assignToId">Assign to</label>
             <select formControlName=assignToId id="assignToId">
               <option>Select assignee</option>
-              <option *ngFor="let user of _loginService.userList" [value]="user.userId">{{user.userName}}</option>
+              <option *ngFor="let user of loginService.userList" [value]="user.userId">{{user.userName}}</option>
             </select>
           </div>
         </div>

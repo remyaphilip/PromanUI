@@ -1,0 +1,49 @@
+<div class="issuecontent">
+  <form class="issueForm" novalidate [formGroup]="form" (ngSubmit)="addUser(form.value)">
+    <div class="issueHead">
+      <h3 *ngIf="user == null" style="float:left">Add User</h3>
+      <h3 *ngIf="user!= null" style="float:left">User Id : {{user.userId}} </h3>
+      <div class="right-head">
+        <button type="submit">
+          <img src="./assets/img/floppy-disk.svg">
+        </button>
+        <button  (click)="removeUser()">
+          <img src="./assets/img/rubbish-bin-delete-button.svg">
+        </button>
+        <button (click)="sendEvent()">
+          <img src="./assets/img/multiply.svg">
+        </button>
+      </div>
+    </div>
+    <div class="issueContent">
+      <div class="name">
+        <label for="name">FirstName Lastname</label>
+        <input type="text" formControlName="name" id="name">
+      </div>
+      <br>
+      <div class="email">
+        <label for="email">Email</label>
+        <input type="text" formControlName="email" id="emailId">
+      </div>
+      <br>
+      <div class="userRole">
+        <label for="userRole">Set Role</label>
+        <select id="userRole" formControlName="userRole">
+          <option>Admin</option>
+          <option>Member</option>
+        </select>
+      </div>
+      <br>
+      <div>
+        <label for="userName">Username</label>
+        <input type="text" formControlName="userName" id="userName">
+      </div>
+      <br>
+      <div>
+        <label for="passwordHash">Set Password</label>
+        <input type="password" formControlName="passwordHash" id="passwordHash">
+      </div>
+      <br>
+    </div>
+  </form>
+</div>

@@ -47,7 +47,7 @@ export class ProjectissueComponent implements OnInit {
   };
 
 
-  constructor(private route: ActivatedRoute, private _loginService: LoginService, private cdr: ChangeDetectorRef,
+  constructor(private route: ActivatedRoute, private loginService: LoginService, private cdr: ChangeDetectorRef,
     private orderPipe: OrderPipe) {
     //this.issue = json_encode(this.issue,JSON_NUMERIC_CHECK);
     this.sortedCollection = orderPipe.transform(this.issue, this.order);
@@ -70,14 +70,14 @@ export class ProjectissueComponent implements OnInit {
       summary: new FormControl(''),
       description: new FormControl('')
     });
-    this.getProject(this._loginService.userId);
+    this.getProject(this.loginService.userId);
     this.getAllIssuePerUser();
   }
 
   getAllIssuePerUser() {
-    this.temp = this._loginService.getAllIssuePerUser(this._loginService.userId).subscribe(response => {
+    this.temp = this.loginService.getAllIssuePerUser(this.loginService.userId).subscribe(response => {
       this.issue = response as Issue[];
-      this.issue = this.issue.filter(iss => iss.projectId == this._loginService.projectId);
+      this.issue = this.issue.filter(iss => iss.projectId == this.loginService.projectId);
       this.cdr.markForCheck();
     })
   }
@@ -85,10 +85,10 @@ export class ProjectissueComponent implements OnInit {
   addIssue() {
     if (this.issueFlag == "Edit") {
       this.insertIssue = this.form.value as Issue;
-      this.insertIssue.reportedById = this._loginService.userId;
+      this.insertIssue.reportedById = this.loginService.userId;
       this.insertIssue.issueId = this.tempIssue.issueId;
       this.insertIssue.projectId = this.tempIssue.projectId;
-      this._loginService.EditIssue(this.insertIssue.issueId, this.insertIssue.projectId, this.insertIssue)
+      this.loginService.EditIssue(this.insertIssue.issueId, this.insertIssue.projectId, this.insertIssue)
         .subscribe(response => {
           this.insertIssue = response as Issue
           this.getAllIssuePerUser();
@@ -97,9 +97,9 @@ export class ProjectissueComponent implements OnInit {
     }
     else {
       this.insertIssue = this.form.value;
-      this.insertIssue.reportedById = this._loginService.userId;
+      this.insertIssue.reportedById = this.loginService.userId;
       this.insertIssue.projectId = this.projectList.find(p => p.name == this.insertIssue.projectName).projectId;
-      this.temp2 = this._loginService.AddIssue(this.insertIssue.projectId, this.insertIssue).subscribe(response => {
+      this.temp2 = this.loginService.AddIssue(this.insertIssue.projectId, this.insertIssue).subscribe(response => {
         this.insertIssue = response as Issue
         this.getAllIssuePerUser();
         this.cdr.markForCheck();
@@ -125,7 +125,7 @@ export class ProjectissueComponent implements OnInit {
   }
 
   removeIssue() {
-    this.temp3 = this._loginService.RemoveIssue(this.tempIssue.issueId)
+    this.temp3 = this.loginService.RemoveIssue(this.tempIssue.issueId)
       .subscribe(response => {
         this.getAllIssuePerUser();
         this.cdr.markForCheck();
@@ -133,7 +133,7 @@ export class ProjectissueComponent implements OnInit {
   }
 
   getProject(userId: number) {
-    this._loginService.getProjectPerOrg(this._loginService.organisation)
+    this.loginService.getProjectPerOrg(this.loginService.organisation)
       .subscribe(response => {
         this.projectList = <Project[]>response;
       });
@@ -243,7 +243,7 @@ export class ProjectissueComponent implements OnInit {
     //for (let i = 0; i < files.length; i++)
     //formdata.append('fileList',files.item(i));
     console.log("here")
-    this._loginService.UpLoadFile(files);
+    this.loginService.UpLoadFile(files);
    // console.log(formdata.getAll('fileList'));
     // for (let i = 0; i < files.length; i++)
     //   console.log(files.item(i));

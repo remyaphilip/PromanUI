@@ -28,7 +28,7 @@ export class SidenavComponent implements OnInit {
   userId: number = 2;
 
 
-  constructor(public _loginService: LoginService, private router: Router) {
+  constructor(public loginService: LoginService, private router: Router) {
     
     
   }

@@ -1,6 +1,6 @@
 <div class="container">
-  <app-navbar  *ngIf = "!(_loginService.login)" ></app-navbar>
-  <div class="sidenav" *ngIf = "!(_loginService.login)" >
+  <app-navbar  *ngIf = "!(loginService.login)" ></app-navbar>
+  <div class="sidenav" *ngIf = "!(loginService.login)" >
     <app-sidenav></app-sidenav>
   </div>
   <div class="content">

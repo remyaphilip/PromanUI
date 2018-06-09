@@ -4,14 +4,14 @@
       <a>Users</a>
     </li>
   </ul>
-  <button (click)="setUserFlagAddUser()">
+  <button *ngIf = "!userForm" (click)="setUserFlagAddUser()">
     <h3>Add User </h3>
   </button>
 </div>
 
 <div class="users" *ngIf="!userForm">
   <ul>
-    <li *ngFor="let user of userList">
+    <li *ngFor="let user of userList" (click)="setUserFlagAddUser(user)">
       <div class="userIcon">
         <img src="./assets/img/round-account-button-with-user-inside.svg">
       </div>
@@ -23,9 +23,9 @@
       <div class="userRole">{{user.userRole}}</div>
       <div class="userActions">
         <div class="dropDownIcon">
-          <button>
+          <!-- <button>
             <img src="./assets/img/more.svg">
-          </button>
+          </button> -->
           <div class="dropDownContent">
           </div>
         </div>
@@ -36,53 +36,7 @@
 
 
 <div class="user" *ngIf="userForm">
-  <div class="issuecontent">
-    <form class="issueForm" novalidate [formGroup]="form" (ngSubmit)="addIssue(form.value)">
-      <div class="issueHead">
-        <h3 *ngIf="issueFlag == 'Add'" style="float:left">Log Issue</h3>
-        <h3 *ngIf="issueFlag == 'Edit'" style="float:left">Issue Id : {{tempIssue.issueId}} </h3>
-        <div class="right-head">
-          <button type="submit">
-            <img src="./assets/img/floppy-disk.svg">
-          </button>
-          <button [disabled]="this.issueFlag == 'Add'" (click)="removeIssue()">
-            <img src="./assets/img/rubbish-bin-delete-button.svg">
-          </button>
-          <button (click)="setIssueForm()">
-            <img src="./assets/img/multiply.svg">
-          </button>
-        </div>
-      </div>
-      <div class="issueContent">
-        <div class="name">
-          <label for="name">FirstName Lastname</label>
-          <input type="text" formControlName="name" id="name">
-        </div>
-        <br>
-        <div class="emailId">
-          <label for="emailId">Email</label>
-          <input type="text" formControlName="emailId" id="emailId">
-        </div>
-        <br>
-        <div class="role">
-          <label for="role">Set Role</label>
-          <select id="role" formControlName="role">
-            <option>Admin</option>
-            <option>Member</option>
-          </select>
-        </div>
-        <br>
-        <div>
-          <label for="userName">Username</label>
-          <input type="text" formControlName="userName" id="userName">
-        </div>
-        <br>
-        <div>
-          <label for="password">Set Password</label>
-          <input type="password" formControlName="password" id="password">
-        </div>
-        <br>
-      </div>
-    </form>
-  </div>
+  <app-userform 
+   [user]="user"
+   (userForm) = "setUserForm($event)"></app-userform>
 </div>

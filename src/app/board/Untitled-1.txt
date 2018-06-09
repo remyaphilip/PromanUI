@@ -22,9 +22,7 @@ component  {
                 list.cards = response
             }            
         }
-
     }
-
 }
 
 
@@ -37,4 +35,7 @@ component  {
 </div>
 
 
+<div *ngIf="showAddCards"> 
+    <add-card-form></add-card-form>
+</div>
 

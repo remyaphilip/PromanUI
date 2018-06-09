@@ -17,6 +17,9 @@ import { NgSwitch } from '@angular/common';
 export class BoardComponent implements OnInit {
 
   list; lists: List[] = [];
+  
+  
+  
   userList: User[] = [];
   card = <Card>{};
   x: Card[] = [];
@@ -30,13 +33,13 @@ export class BoardComponent implements OnInit {
   res: Card;
   boardFlag: boolean;
 
-  constructor(private _loginService: LoginService, private router: Router) {
-    this.getBoard(this._loginService.projectId);
+  constructor(private loginService: LoginService, private router: Router) {
+    this.getBoard(this.loginService.projectId);
 
   }
 
   ngOnInit() {
-    this.getAllUserPerProject(this._loginService.projectId);
+    this.getAllUserPerProject(this.loginService.projectId);
     this.form = new FormGroup({
       summary: new FormControl(''),
       description: new FormControl(''),
@@ -50,41 +53,41 @@ export class BoardComponent implements OnInit {
 
   addCard(post) {
     this.card = this.form.value;
-    this.card.reportedById = this._loginService.userId;
-    this.card.projectId = this._loginService.projectId;
-    this.temp3 = this._loginService.AddCard(post.listId, this.card).subscribe(response => {
+    this.card.reportedById = this.loginService.userId;
+    this.card.projectId = this.loginService.projectId;
+    this.temp3 = this.loginService.AddCard(post.listId, this.card).subscribe(response => {
       this.res = response as Card;
     })
 
   }
 
   getAllUserPerProject(projectId: number) {
-    this.temp2 = this._loginService.getAllUserPerProject(this._loginService.projectId).subscribe(response => {
+    this.temp2 = this.loginService.getAllUserPerProject(this.loginService.projectId).subscribe(response => {
       this.userList = response as User[];
     })
   }
 
   getBoard(projectId: number) {
-    this.temp1 = this._loginService.getBoard(projectId).subscribe(data => {
+    this.temp1 = this.loginService.getBoard(projectId).subscribe(data => {
       this.board = data as Board;
-      this.getList(this.board.boardId);
+     // this.getList(this.board.boardId);
     })
 
   }
 
   boardOnClick() {
-    this.getBoard(this._loginService.projectId);
+    this.getBoard(this.loginService.projectId);
   }
-  getList(boardId: number) {
-    this.temp = this._loginService.getList(boardId).subscribe(response => {
-      this.list = <List[]>response;
-      this.getAllCardPerList()
-    })
-    this.getlist();
-  }
+  // getList(boardId: number) {
+  //   this.temp = this.loginService.getList(boardId).subscribe(response => {
+  //     this.list = <List[]>response;
+  //     this.getAllCardPerList()
+  //   })
+  //   this.getlist();
+  // }
 
   getlist() {
-    this._loginService.getlist(this._loginService.projectId).subscribe(response => {
+    this.loginService.getlist(this.loginService.projectId).subscribe(response => {
       this.lists = <List[]>response;
       console.log(this.lists);
     })
@@ -97,7 +100,7 @@ export class BoardComponent implements OnInit {
 
   getAllCardPerList() {
     this.list.forEach(element => {
-      this._loginService.getAllCardPerList(element.listId).subscribe(response => {
+      this.loginService.getAllCardPerList(element.listId).subscribe(response => {
 
         this.x = <Card[]>response;
         this.x.forEach(e => {
