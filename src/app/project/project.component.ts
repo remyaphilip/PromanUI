@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, ViewChild, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormControl, FormGroup } from '@angular/forms';
 import { Nav } from '../sidenav/nav';
 import { Project } from '../interface/project';
 import { LoginService } from '../login.service';
@@ -19,37 +18,26 @@ export class ProjectComponent {
 
 
   projectList: Project[] = [];
-  projectColumn: string[];
   boardFlag: boolean;
+  dropDown: boolean[] = [];
+  sIndex: number;
   projectForm: boolean = false;
-  form: FormGroup;
   project: Project;
 
   constructor(private router: Router, private loginService: LoginService) {
 
   }
   ngOnInit(): void {
-    //this.loginService.userId = 2;
-    
-    this.form = new FormGroup({
-      name: new FormControl('')
-    });
     this.getProject(this.loginService.userId);
-    // this.getParams();
-
   }
 
   getProject(userId: number) {
     this.loginService.getProjectPerOrg(this.loginService.organisation)
       .subscribe(response => {
         this.projectList = <Project[]>response;
-        this.projectColumn = this.getProjectColumn();
+        this.dropDown.length = this.projectList.length;
       });
 
-  }
-
-  getProjectColumn(): string[] {
-    return ["projectId", "name"]
   }
 
   setProject(projectId: number) {
@@ -59,17 +47,28 @@ export class ProjectComponent {
     this.router.navigate(['projectitem', this.boardFlag]);
 
   }
-
-  setProjectForm() {
-    this.projectForm = true;
+  editProjectForm(project: Project, flag: boolean,index:number) {
+    this.project = project;
+    this.setDropDown(index)
+    this.setProjectForm(flag);
   }
-  addProject(){
-   this.project=this.form.value;
-   this.project.organisation = this.loginService.organisation;
-   console.log(this.project);
-   this.loginService.AddProject(this.project).subscribe(res => {
-     console.log(res)
-   });
+
+  setProjectForm(flag: boolean) {
+    this.projectForm = flag;
+  }
+
+
+  setDropDown(index: number) {
+    if (this.dropDown[index] == true) {
+      this.dropDown[index] = false
+    }
+    else {
+      this.dropDown[index] = true;
+    }
+    for (let i = 0; i < this.dropDown.length; i++) {
+      if (i != index)
+        this.dropDown[i] = false;
+    }
   }
 
 

@@ -1,6 +1,7 @@
 export interface Project {
     projectId: number,
-    name: string
+    name: string,
+    boardId: number,
     organisation: string;
 
 }

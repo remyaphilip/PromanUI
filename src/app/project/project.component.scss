@@ -73,6 +73,9 @@ div {
     }
   }
 }
+.block1{
+  flex: 1 1 auto;
+}
 
 .userIcon {
   margin-right: 16px;
@@ -123,6 +126,7 @@ div {
 
 .userActions {
   width: 60px;
+  pointer-events: all;
   div {
     button {
       cursor: pointer;
@@ -140,195 +144,17 @@ div {
   }
 }
 
-.modal_container,
-.modal {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  z-index: 100; // width: 300px;
-  // height: 65px;
-  // position: fixed;
-  // top: 17%;
-  // right: 2%;
-  // background-color: #F3F3F3;
-  // button {
-  //   position: absolute;
-  //   right: 1%;
-  //   top: 2%;
-  //   background: none;
-  //   img {
-  //     width: 20px;
-  //     height: 20px;
-  //   }
-  // }
-  // div {
-  //   padding: 20px;
-  // }
-}
-
-.modal_container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-.modal{
-  position: static;
-  top: auto;
-  left: auto;
-}
-.background {
-  background: #000;
-  opacity: .6;
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  z-index: 100;
-}
-
-
-.cancelbutton{
+.dropDownContent{
   background-color: #fff;
-  color: #666;
-}
-
-.createbutton{
-  background-color: #56ad56;
-  color: #fff;
-}
-.modal_content {
-  -webkit-user-select: text;
-  -moz-user-select: text;
-  -ms-user-select: text;
-  user-select: text;
-  text-rendering: optimizeLegibility;
-  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, .4);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, .4);
-  z-index: 100;
-  overflow: hidden;
-  height: 100%;
-  border-radius: 4px;
-  color: #000;
-  background-color: #f6f6f6;
-  position: relative;
-  form {
-    height: 100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-  }
-
-  header{
-    color: #333;
-    font-weight: 100;
-    padding: 12px 23px;
-    background-color: #fff;
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-    -webkit-box-shadow: 0 2px 5px rgba(0,0,0,.4);
-    box-shadow: 0 2px 5px rgba(0,0,0,.4);
-    border-bottom: 1px solid #ddd;
-    h1{
-      color: #333;
-      line-height: 36px;
-      font-size: 22px;
-      font-weight: 400;
-      letter-spacing: -.02em;
-      text-rendering: optimizeLegibility;
-    }
-  }
-footer{
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  bottom: 0;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  width: 100%;
-  z-index: 100;
-  button {
-    position: initial;
-    display: inline-block;
-    text-align: center;
-    vertical-align: middle;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    background: #fff;
-    background-image: none;
-    border: 1px solid transparent;
-    border-radius: 2px;
-    color: #333;
-    cursor: pointer;
-    font-weight: 400;
-    line-height: 1.5;
-    margin: 0 2px;
-    -ms-touch-action: manipulation;
-    touch-action: manipulation;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    white-space: nowrap;
-    -webkit-transition-property: background-color,color,opacity;
-    transition-property: background-color,color,opacity;
-    -webkit-transition-duration: .3s;
-    transition-duration: .3s;
-    -webkit-transition-timing-function: ease-out;
-    transition-timing-function: ease-out;
-    font-size: 14px;
-    padding: 8px 10px;
-   }
+  display: block;
+  position: absolute;
+  margin-top: 4px;
+  z-index: 101;
 }
 
 
-}
-.modal-footer{
-  padding: 7px 9px;
-  background-color: #fff;
-  text-align: right;
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-  border-top: 1px solid #ddd;
-}
-.form_modal_content{
-  -webkit-user-select: text;
-  -moz-user-select: text;
-  -ms-user-select: text;
-  user-select: text;
-  text-rendering: optimizeLegibility;
-  z-index: 100;
+.user {
+  background-color: white;
   overflow: auto;
-  color: #000;
-  background-color: #f6f6f6;
-  position: relative;
-  width: 400px;
 }
 
-.form-modal-section{
-  padding: 24px 24px 0;
-  div{
-    padding: 0 0 30px;
-    label {
-      font-size: 12px;
-      color: #333;
-    }
-  }
-}

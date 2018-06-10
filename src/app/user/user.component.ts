@@ -34,9 +34,8 @@ export class UserComponent implements OnInit {
       this.user = user;
     }else
     this.user=null;
-   // this.form.reset();
   }
   setUserForm(flag:boolean){
-    this.userForm =flag
+    this.userForm =flag;
   }
 }

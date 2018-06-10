@@ -90,8 +90,15 @@ export class LoginService {
 
     return this.http.post<boolean>(this.base + '/upload', files);
   }
-  AddProject(project: Project) {
+  AddProject(project: Project): Observable<boolean> {
     return this.http.post<boolean>(this.base + '/newproject', project, httpOptions);
+  }
+  EditProject(project: Project): Observable<boolean> {
+    return this.http.post<boolean>(this.base + '/editproject/' + project.projectId, httpOptions);
+  }
+
+  RemoveProject(projectId: number): Observable<boolean> {
+    return this.http.delete<boolean>(this.base + '/removeproject/' + projectId, httpOptions);
   }
 
   AddUser(user: User) {
@@ -101,6 +108,6 @@ export class LoginService {
     return this.http.post<boolean>(this.base + '/edituser/' + userId, user, httpOptions);
   }
   RemoveUser(userId: number) {
-    return this.http.delete<boolean>(this.base + '/removeuser/' +userId, httpOptions)
+    return this.http.delete<boolean>(this.base + '/removeuser/' + userId, httpOptions)
   }
 }

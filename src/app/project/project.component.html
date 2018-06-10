@@ -4,30 +4,32 @@
       <a>Project Listing</a>
     </li>
   </ul>
-  <button class="addProject" (click)="setProjectForm()">
+  <button class="addProject" (click)="setProjectForm(true)">
     <h3>Add Project </h3>
   </button>
 </div>
 
 
-<div class="projects">
+<div class="projects" *ngIf="!projectForm">
   <ul>
-    <li *ngFor="let pro of projectList" (click)="setProject(pro.projectId)">
+    <li *ngFor="let pro of projectList; let i = index">
       <!-- <div class="userIcon">
         <img src="./assets/img/round-account-button-with-user-inside.svg">
       </div> -->
-      <div class="userInfo">
-        <div class="projectName">{{pro.name}}</div>
-        <!-- <div class="userInfoEmail">{{user.email}}</div> -->
+      <div class="block1" (click)="setProject(pro.projectId)">
+        <div class="userInfo">
+          <div class="projectName">{{pro.name}}</div>
+          <!-- <div class="userInfoEmail">{{user.email}}</div> -->
+        </div>
+        <div class="userStatus"></div>
+        <!-- <div class="userRole">{{user.userRole}}</div> -->
       </div>
-      <div class="userStatus"></div>
-      <!-- <div class="userRole">{{user.userRole}}</div> -->
-      <div class="userActions">
+      <div class="userActions" (click)="setDropDown(i)">
         <div class="dropDownIcon">
           <button>...
-            <!-- <img src="./assets/img/more.svg"> -->
           </button>
-          <div class="dropDownContent">
+          <div class="dropDownContent" *ngIf="dropDown[i]">
+            <button (click)="editProjectForm(pro,true,i)">Edit</button>
           </div>
         </div>
       </div>
@@ -35,8 +37,9 @@
   </ul>
 </div>
 
-<div class="modal_container" *ngIf="projectForm">
-  <div class="background" (click)="projectForm=false"></div>
+<div class="user" *ngIf="projectForm">
+  <app-projectform [project]="project" (projectForm)="setProjectForm($event)"></app-projectform>
+  <!-- <div class="background" (click)="projectForm=false"></div>
   <div class="modal">
     <div class="modal_content">
       <form [formGroup]="form" (ngSubmit)="addProject(form.value)">
@@ -62,5 +65,5 @@
         </div>
       </form>
     </div>
-  </div>
+  </div> -->
 </div>

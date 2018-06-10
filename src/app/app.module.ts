@@ -35,6 +35,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { UserComponent } from './user/user.component';
 import { OrderModule } from 'ngx-order-pipe';
 import { UserformComponent } from './userform/userform.component';
+import { ProjectformComponent } from './projectform/projectform.component';
 
 
 
@@ -56,7 +57,8 @@ import { UserformComponent } from './userform/userform.component';
     OutletComponent,
     NotfoundComponent,
     UserComponent,
-    UserformComponent
+    UserformComponent,
+    ProjectformComponent
   ],
   imports: [
     BrowserModule,
