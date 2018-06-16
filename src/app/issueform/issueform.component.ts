@@ -42,12 +42,14 @@ export class IssueformComponent implements OnInit {
   }
 
   sendEvent() {
+    this.form.reset();
     this.issueForm.emit(false);
   }
 
   getFormValue() {
     console.log(this.projectList);
     if (this.issue != null) {
+      console.log('value');
       this.form.patchValue({
         projectName: this.projectList.find(p => p.projectId == this.issue.projectId).name,
         statusCode: this.issue.statusCode,

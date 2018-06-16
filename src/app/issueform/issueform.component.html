@@ -4,9 +4,10 @@
       <h3 *ngIf="issueFlag == 'Add'" style="float:left">Log Issue</h3>
       <h3 *ngIf="issueFlag == 'Edit'" style="float:left">Issue Id : {{tempIssue.issueId}} </h3>
       <div class="right-head">
-        <button type="submit">
+        <button type="submit" class="btn btn-light">
           <img src="./assets/img/floppy-disk.svg">
         </button>
+
         <button [disabled]="this.issueFlag == 'Add'" (click)="removeIssue()">
           <img src="./assets/img/rubbish-bin-delete-button.svg">
         </button>

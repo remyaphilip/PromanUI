@@ -54,6 +54,7 @@ export class ProjectissueComponent implements OnInit {
   getAllIssuePerUser() {
     this.loginService.getAllIssuePerUser(this.loginService.userId).subscribe(response => {
       this.issueList = response as Issue[];
+      this.issueList = this.issueList.filter(iss => iss.projectId == this.loginService.projectId);
       this.cdr.markForCheck();
     })
   }
