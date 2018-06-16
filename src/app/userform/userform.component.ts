@@ -14,9 +14,8 @@ export class UserformComponent implements OnInit {
   @Output() userForm = new EventEmitter<boolean>();
   form: FormGroup;
   insertUser = {} as User;
+  
   constructor(public loginService: LoginService) { }
-
-
 
   ngOnInit() {
     this.form = new FormGroup({

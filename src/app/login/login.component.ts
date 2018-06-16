@@ -25,12 +25,14 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin(email: string, passwordHash: string) {
+    console.log(email,passwordHash);
     this.loginService.getLogin(email, passwordHash)
       .subscribe((response: User) => {
         this.user = response;
         this.loginService.userId = this.user.userId;
         this.loginService.organisation = this.user.organisation;
         this.loginService.login = false;
+        console.log(this.user)
         this.getAllUsers();
         this.router.navigate(['login']);
       });

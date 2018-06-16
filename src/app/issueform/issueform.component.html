@@ -1,0 +1,99 @@
+<div class="issuecontent" *ngIf = "projectList">
+  <form class="issueForm" novalidate [formGroup]="form" (ngSubmit)="addIssue(form.value)">
+    <div class="issueHead">
+      <h3 *ngIf="issueFlag == 'Add'" style="float:left">Log Issue</h3>
+      <h3 *ngIf="issueFlag == 'Edit'" style="float:left">Issue Id : {{tempIssue.issueId}} </h3>
+      <div class="right-head">
+        <button type="submit">
+          <img src="./assets/img/floppy-disk.svg">
+        </button>
+        <button [disabled]="this.issueFlag == 'Add'" (click)="removeIssue()">
+          <img src="./assets/img/rubbish-bin-delete-button.svg">
+        </button>
+        <button (click)="sendEvent()">
+          <img src="./assets/img/multiply.svg">
+        </button>
+      </div>
+    </div>
+    <div class="issueContent">
+      <div class="block1">
+        <div>
+          <label for="statusCode">Status</label>
+          <select id="statusCode" formControlName="statusCode">
+            <option>Select Issue Status</option>
+            <option>Open</option>
+            <option>In Progress</option>
+            <option>Not a Bug</option>
+            <option>Closed</option>
+          </select>
+        </div>
+
+      </div>
+      <br>
+      <div class="block1">
+        <div>
+          <label for="Select Project">Select Project</label>
+          <select id="selectProject" formControlName="projectName">
+            <option>Select Project </option>
+            <option *ngFor="let project of projectList" [value]="project.name">{{project.name}}</option>
+          </select>
+        </div>
+
+        <div class="issuePriority">
+          <label for="issuePriority">Priority</label>
+          <select id="issuePriority" formControlName="priorityCode">
+            <option>Select Priority</option>
+            <option>Low</option>
+            <option>High</option>
+          </select>
+        </div>
+      </div>
+      <br>
+      <div class="block1">
+        <div>
+          <label for="startDate">Start Date</label>
+          <input type="date" formControlName="startDate" id="startDate">
+        </div>
+
+        <div>
+          <label for="endDate">End Date</label>
+          <input type="date" formControlName="endDate" id="endDate">
+        </div>
+      </div>
+      <br>
+      <div class="block1">
+        <div>
+          <label for="dueDate">Due Date</label>
+          <input type="date" formControlName="dueDate" id="dueDate">
+        </div>
+
+        <div>
+          <label for="assignToId">Assign to</label>
+          <select formControlName=assignToId id="assignToId">
+            <option>Select assignee</option>
+            <option *ngFor="let user of loginService.userList" [value]="user.userId">{{user.userName}}</option>
+          </select>
+        </div>
+      </div>
+      <br>
+      <div class="summary">
+        <label for="summary">Summary</label>
+        <input type="text" formControlName="summary" id="summary">
+      </div>
+      <br>
+      <div class="description">
+        <div>
+          <label for="description">Description</label>
+        </div>
+        <textarea id="description" formControlName="description" rows="12"></textarea>
+        <br>
+        <input #fileInput type="file" name="fileInput" [multiple]="true" (change)="upLoad($event.target.files)">
+        <!-- <button>
+          <img src="./assets/img/attachment.svg" class="attachIcon">Choose file
+        </button> -->
+        <br>
+        <br>
+      </div>
+    </div>
+  </form>
+</div>

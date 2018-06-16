@@ -9,7 +9,6 @@ import { User } from '../interface/user';
 })
 export class UserComponent implements OnInit {
 
-  temp: any;
   userList: User[];
   user: User;
   userFlag: string;
@@ -21,7 +20,7 @@ export class UserComponent implements OnInit {
   }
   getAllUsers() {
     console.log(this.loginService.organisation);
-    this.temp = this.loginService.GetAllUsers(this.loginService.organisation)
+    this.loginService.GetAllUsers(this.loginService.organisation)
       .subscribe(response => {
         this.userList = response as User[];
         console.log(this.userList);
@@ -32,6 +31,7 @@ export class UserComponent implements OnInit {
     this.setUserForm(true);
     if (user){
       this.user = user;
+      console.log(user);
     }else
     this.user=null;
   }

@@ -10,6 +10,73 @@
         <img src="./assets/img/export.svg">
       </button>
     </span>
+    <button (click)="setIssueFlag(issue)">
+      <h3>Add Issue </h3>
+    </button>
+  </div>
+  <div *ngIf="!issueForm">
+    <div class="issues">
+      <ul>
+        <li class="issueHeader">
+          <div class="userIcon">
+            <input type="checkbox" (change)="checkboxEvent($event,1.1)" [checked]="checkAll">
+          </div>
+          <div class="level2">
+            <div class="userInfo">
+              <div class="userInfoName" [class.active]="order === 'issueList.issueId'" (click)="setOrder('issueList.issueId')">
+                Issue
+                <span [hidden]="reverse">▼</span>
+                <span [hidden]="!reverse">▲</span>
+              </div>
+            </div>
+            <div class="userStatus" [class.active]="order === 'issueList.statusCode'" (click)="setOrder('issueList.statusCode')">Current Status
+              <span [hidden]="reverse">▼</span>
+              <span [hidden]="!reverse">▲</span>
+            </div>
+            <div class="userRole" [class.active]="order === 'issueList.dueDate'" (click)="setOrder('issueList.dueDate')">Due Date
+              <span [hidden]="reverse">▼</span>
+              <span [hidden]="!reverse">▲</span>
+            </div>
+          </div>
+        </li>
+        <li *ngFor="let iss of issueList | orderBy:order:reverse:'case-insensitive'">
+          <div class="userIcon">
+            <input type="checkbox" (change)="checkboxEvent($event,iss.issueId)" [checked]="checkAll">
+          </div>
+          <div class="level2" (click)="setIssueFlag(iss)">
+            <div class="userInfo">
+              <div class="userInfoName">{{iss.issueId}} - {{iss.summary}}</div>
+            </div>
+            <div class="userStatus">{{iss.statusCode}}</div>
+            <div class="userRole">{{iss.dueDate | date:'dd-MMM-yyyy'}}</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="issue" *ngIf="issueForm">
+  <app-issueform
+  [issue]="issue"
+  [projectList]="projectList"
+   (issueForm) = "setIssueForm($event)"></app-issueform>
+</div>
+
+
+
+<!-- <div>
+  <div class="topBar">
+    <ul class="projectMenu">
+      <li>
+        <a>Track Issue</a>
+      </li>
+    </ul>
+    <span>
+      <button class="export" (click)="generateCsv()">
+        <img src="./assets/img/export.svg">
+      </button>
+    </span>
     <button (click)="setIssueFlagAddIssue()">
       <h3>Add Issue </h3>
     </button>
@@ -149,13 +216,13 @@
           <!-- <button>
             <img src="./assets/img/attachment.svg" class="attachIcon">Choose file
           </button> -->
-          <br>
+          <!-- <br>
           <br>
         </div>
       </div>
     </form>
   </div>
-</div>
+</div> -->
 
 
 
@@ -165,4 +232,4 @@
 
 
 
-
+ -->

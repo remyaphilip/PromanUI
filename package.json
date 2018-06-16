@@ -24,10 +24,13 @@
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
     "angular5-csv": "^0.2.10",
+    "bootstrap": "^4.1.1",
     "core-js": "^2.4.1",
     "g": "^2.0.1",
     "global": "^4.3.2",
+    "jquery": "^1.9.1",
     "ngx-order-pipe": "^2.0.1",
+    "popper.js": "^1.14.3",
     "rxjs": "^5.5.6",
     "zone.js": "^0.8.19"
   },

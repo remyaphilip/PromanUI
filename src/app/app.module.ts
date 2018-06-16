@@ -16,6 +16,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { ReactiveFormsModule } from '@angular/forms';
 
 
+
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { LoginService } from './login.service';
@@ -36,6 +37,7 @@ import { UserComponent } from './user/user.component';
 import { OrderModule } from 'ngx-order-pipe';
 import { UserformComponent } from './userform/userform.component';
 import { ProjectformComponent } from './projectform/projectform.component';
+import { IssueformComponent } from './issueform/issueform.component';
 
 
 
@@ -58,7 +60,8 @@ import { ProjectformComponent } from './projectform/projectform.component';
     NotfoundComponent,
     UserComponent,
     UserformComponent,
-    ProjectformComponent
+    ProjectformComponent,
+    IssueformComponent
   ],
   imports: [
     BrowserModule,
@@ -77,17 +80,20 @@ import { ProjectformComponent } from './projectform/projectform.component';
     FormsModule,
     ReactiveFormsModule,
     OrderModule,
-    RouterModule.forRoot([
+    RouterModule.forRoot([ 
 
       { path: 'home', component: HomeComponent },
       { path: 'project', component: ProjectComponent },
-      { path: 'user', component: UserComponent},
-      { path: 'board', component: BoardComponent},     
+      { path: 'user', component: UserComponent },
+      { path: 'board', component: BoardComponent },
       { path: 'projectitem/:flag', component: ProjectItemComponent },
+      //{ path: 'projectitem/:flag', loadChildren: './project-item/project-item.module#ProjectitemModule' },
+      { path: 'issueform', component: IssueformComponent },
+     //  { path: 'issue', component: IssueComponent },
+     // { path: 'issue/:userId', loadChildren: './issue/issue.module#IssueModule' },
       { path: 'issue/:userId', component: IssueComponent },
-      { path: 'issue', component: IssueComponent },
       { path: 'login', component: LoginComponent },
-      { path: '**', component: NotfoundComponent }
+       { path: '**', component: NotfoundComponent }
     ])
   ],
   providers: [LoginService],

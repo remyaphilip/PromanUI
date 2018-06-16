@@ -32,7 +32,7 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   getLogin(email: string, passwordHash: string): Observable<User> {
-    return this.http.get<User>(this.base + '/user/' + email + '/' + passwordHash);
+    return this.http.get<User>(this.base + '/user/' + email + '/' + passwordHash);    
   }
 
   getProjectPerOrg(organisation: string): Observable<Project[]> {
@@ -70,16 +70,15 @@ export class LoginService {
     return this.http.get<Card[]>(this.base + '/getallcard/' + listId);
   }
 
-  AddIssue(projectId: number, issue: Issue): Observable<Issue> {
-    return this.http.post<Issue>(this.base + '/issue/' + projectId, issue, httpOptions);
+  AddIssue(projectId: number, issue: Issue): Observable<boolean> {
+    return this.http.post<boolean>(this.base + '/issue/' + projectId, issue, httpOptions);
   }
 
-  EditIssue(issueId: number, projectId: number, issue: Issue): Observable<Issue> {
-    return this.http.post<Issue>(this.base + '/editissue/' + issueId + '/' + projectId, issue, httpOptions);
+  EditIssue(issueId: number, projectId: number, issue: Issue): Observable<boolean> {
+    return this.http.post<boolean>(this.base + '/editissue/' + issueId + '/' + projectId, issue, httpOptions);
   }
 
   RemoveIssue(issueId: number): Observable<boolean> {
-    console.log(issueId);
     return this.http.delete<boolean>(this.base + '/delete/' + issueId, httpOptions);
   }
   GetAllUsers(organisation: string) {
