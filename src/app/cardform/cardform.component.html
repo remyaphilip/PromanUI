@@ -1,0 +1,59 @@
+<div class="cardcontent">
+  <form class="taskform" novalidate [formGroup]="form" (ngSubmit)="addCard()">
+    <div class="cardHead">
+      <h3 style="float:left" *ngIf="!card.cardId">Create Task</h3>
+      <h3 style="float:left" *ngIf="card.cardId">Edit Task</h3>
+      <div class="right-head">
+        <img src="./assets/img/attachment.svg" class="attachIcon">
+        <button type="submit">
+          <img src="./assets/img/floppy-disk.svg">
+        </button>
+        <button (click) = "removeCard()">
+          <img src="./assets/img/rubbish-bin-delete-button.svg">
+        </button>
+        <button (click)="sendEvent()">
+          <img src="./assets/img/multiply.svg">
+        </button>
+      </div>
+    </div>
+    <div class="formContent">
+      <div>
+        <label for="listId">Task Status</label>
+        <select id="listId" formControlName="listName">
+          <option>Select task type</option>
+          <option *ngFor="let lis of lists" [value]="lis.listName">{{lis.listName}}</option>
+        </select>
+      </div>
+      <br>
+      <div>
+        <label for="startDate">Start Date</label>
+        <input type="date" formControlName="startDate" id="startDate">
+      </div>
+      <br>
+      <div>
+        <label for="endDate">End Date</label>
+        <input type="date" formControlName="endDate" id="endDate">
+      </div>
+      <br>
+      <div>
+        <label for="assignedToId">Assigned to</label>
+        <select formControlName=assignedToId id="assignedToId">
+          <option>Select assignee</option>
+          <option *ngFor="let user of loginService.userList" [value]="user.userId">{{user.userName}}</option>
+        </select>
+      </div>
+      <br>
+      <div>
+        <label for="summary">Summary</label>
+        <input type="text" formControlName="summary" id="summary">
+      </div>
+      <br>
+      <div>
+        <label for="description">Description</label>
+      </div>
+      <div class="description">
+        <textarea id="description" formControlName="description" rows="12"></textarea>
+      </div>
+    </div>
+  </form>
+</div>

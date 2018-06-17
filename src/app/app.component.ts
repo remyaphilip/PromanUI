@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit {
 
   constructor(private loginService: LoginService, private router: Router) {
+    //localStorage.setItem("userId",5);
     //this.loginService.login = true;
   }
 

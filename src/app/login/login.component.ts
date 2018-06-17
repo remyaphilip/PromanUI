@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
     this.temp = this.loginService.GetAllUsers(this.loginService.organisation)
       .subscribe(response => {
         this.loginService.userList = response as User[];
-        console.log(this.loginService.userList);
+        console.log(this.loginService.organisation);
       });
   }
 }

@@ -6,112 +6,21 @@
   </button>
 
 </div>
-<!-- --------------------------------------------------------------------------------------------------------------- -->
 
 <div class="dataBlock">
   <div class="list">
     <ul>
-      <li *ngFor="let lis of list">
+      <li *ngFor="let lis of lists">
         {{lis.listName}}
+        <ul class="card-list">
+          <li *ngFor="let card of lis.cards" (click) = "setCardFlag(card,lis)">
+            {{card.summary}}
+          </li>
+        </ul>
       </li>
     </ul>
   </div>
-
-  <div class="listData">
-    
-      <ul *ngFor="let card of cardList">
-        <li *ngIf="card.listId == 1">
-          {{card.summary}}
-        </li>
-      </ul>
-      <ul *ngFor="let card of cardList">
-        <li *ngIf="card.listId == 3">
-          {{card.summary}}
-        </li>
-      </ul>
-    
-    <!-- <div class="listDataBlock">
-      <ul *ngFor="let card of cardList">
-        <div>
-          <li *ngIf="card.listId == 2">{{card.summary}}</li>
-        </div>
-      </ul>
-    </div>
-    <div class="listDataBlock">
-      <ul *ngFor="let card of cardList">
-        <div>
-          <li *ngIf="card.listId == 3">{{card.summary}}</li>
-        </div>
-      </ul>
-    </div>
-    <div class="listDataBlock">
-      <ul *ngFor="let card of cardList">
-        <div>
-          <li *ngIf="card.listId == 4">{{card.summary}}</li>
-        </div>
-      </ul>
-    </div> -->
-  </div>
-
-
-  <div class="card" *ngIf="cardForm">
-    <div class="cardcontent">
-      <form class="taskform" novalidate [formGroup]="form" (ngSubmit)="addCard(form.value)">
-        <div class="cardHead">
-          <h3 style="float:left">Create Task</h3>
-          <div class="right-head">
-            <img src="./assets/img/attachment.svg" class="attachIcon">
-            <button type="submit">
-              <img src="./assets/img/floppy-disk.svg">
-            </button>
-            <img src="./assets/img/rubbish-bin-delete-button.svg">
-            <button (click)="cardForm=false">
-              <img src="./assets/img/multiply.svg">
-            </button>
-          </div>
-        </div>
-        <div class="formContent">
-          <div>
-            <label for="listId">Task Status</label>
-            <select id="listId" formControlName="listId">
-              <option>Select task type</option>
-              <option *ngFor="let lis of list" [value]="lis.listId">{{lis.listName}}</option>
-            </select>
-          </div>
-          <br>
-          <div>
-            <label for="startDate">Start Date</label>
-            <input type="date" formControlName="startDate" id="startDate">
-          </div>
-          <br>
-          <div>
-            <label for="endDate">End Date</label>
-            <input type="date" formControlName="endDate" id="endDate">
-          </div>
-          <br>
-          <div>
-            <label for="assignedToId">Assigned to</label>
-            <select formControlName=assignedToId id="assignedToId">
-              <option>Select assignee</option>
-              <option *ngFor="let user of userList" [value]="user.userId">{{user.userName}}</option>
-            </select>
-          </div>
-          <br>
-          <div>
-            <label for="summary">Summary</label>
-            <input type="text" formControlName="summary" id="summary">
-          </div>
-          <br>
-          <div>
-            <label for="description">Description</label>
-          </div>
-          <div class="description">
-            <textarea id="description" formControlName="description" rows="12"></textarea>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-
-
+</div>
+<div class="card" *ngIf="cardForm">
+  <app-cardform [lists]="lists" [card]="card" [list]= "list" (cardForm)="setCardForm($event)"></app-cardform>
 </div>

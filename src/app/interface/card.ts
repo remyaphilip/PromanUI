@@ -1,4 +1,5 @@
 export interface Card {
+    cardId: number,
     description: string,
     status: string,
     priority: string,
@@ -10,5 +11,6 @@ export interface Card {
     startDate: Date,
     endDate: Date,
     creationDateTime: DateTimeFormat,
-    listId: number;
+    listId: number,
+    listName: string
 }

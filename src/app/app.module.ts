@@ -38,6 +38,7 @@ import { OrderModule } from 'ngx-order-pipe';
 import { UserformComponent } from './userform/userform.component';
 import { ProjectformComponent } from './projectform/projectform.component';
 import { IssueformComponent } from './issueform/issueform.component';
+import { CardformComponent } from './cardform/cardform.component';
 
 
 
@@ -61,7 +62,8 @@ import { IssueformComponent } from './issueform/issueform.component';
     UserComponent,
     UserformComponent,
     ProjectformComponent,
-    IssueformComponent
+    IssueformComponent,
+    CardformComponent
   ],
   imports: [
     BrowserModule,

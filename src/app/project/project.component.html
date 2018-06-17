@@ -39,31 +39,4 @@
 
 <div class="user" *ngIf="projectForm">
   <app-projectform [project]="project" (projectForm)="setProjectForm($event)"></app-projectform>
-  <!-- <div class="background" (click)="projectForm=false"></div>
-  <div class="modal">
-    <div class="modal_content">
-      <form [formGroup]="form" (ngSubmit)="addProject(form.value)">
-        <header>
-          <h1> Create a new project</h1>
-        </header>
-        <div class="form_modal_content">
-          <div class="form-modal-section">
-            <div class="name">
-              <label for="name">Project Name
-                <input #projectname formControlName="name" type="text" id="name">
-              </label>
-            </div>
-          </div>
-          <footer class="modal-footer">
-            <button class="cancelbutton" (click)="projectForm=false">
-              Cancel
-            </button>
-            <button type="submit" class="createbutton">
-              Create
-            </button>
-          </footer>
-        </div>
-      </form>
-    </div>
-  </div> -->
 </div>

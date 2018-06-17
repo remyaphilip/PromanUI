@@ -19,8 +19,9 @@ const httpOptions = {
 @Injectable()
 export class LoginService {
   private base = environment._baseUrl;
+  //userId: number = localStorage.getItem('userId');
   userId: number;
-  organisation: string;
+  organisation: string = "test";
   projectId: number;
   projectName: string;
   login: boolean;
@@ -32,11 +33,11 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   getLogin(email: string, passwordHash: string): Observable<User> {
-    return this.http.get<User>(this.base + '/user/' + email + '/' + passwordHash);    
+    return this.http.get<User>(this.base + '/user/' + email + '/' + passwordHash);
   }
 
   getProjectPerOrg(organisation: string): Observable<Project[]> {
-    return this.http.get<Project[]>(this.base + '/project/' + organisation);
+    return this.http.get<Project[]>(this.base + '/project/' + "test");
   }
 
   getAllUserPerProject(projectId: number): Observable<User[]> {
@@ -50,6 +51,7 @@ export class LoginService {
   getList(boardId: number) {
     return this.http.get<List[]>(this.base + '/board/' + boardId + '/list');
   }
+
   getlist(projectId: number) {
     return this.http.get<List[]>(this.base + '/projectId/' + projectId);
   }
@@ -59,11 +61,19 @@ export class LoginService {
   }
 
   getAllIssuePerUser(userId: number) {
-    return this.http.get<Issue[]>(this.base + '/issue/' + userId);
+    return this.http.get<Issue[]>(this.base + '/issue/' + localStorage.getItem("userId"));
   }
 
-  AddCard(listId: number, card: Card): Observable<Card> {
-    return this.http.post<Card>(this.base + '/card/' + listId, card, httpOptions);
+  AddCard(listId: number, card: Card): Observable<boolean> {
+    return this.http.post<boolean>(this.base + '/card/' + listId, card, httpOptions);
+  }
+
+  EditCard(card: Card): Observable<boolean> {
+    return this.http.post<boolean>(this.base + '/editcard/' + card.listId + '/' + card.cardId, card, httpOptions)
+  }
+
+  RemoveCard(cardId: number): Observable<boolean>{
+    return this.http.delete<boolean>(this.base + '/removecard/'+ cardId,httpOptions);
   }
 
   getAllCardPerList(listId: number): Observable<Card[]> {
@@ -86,12 +96,13 @@ export class LoginService {
   }
 
   UpLoadFile(files: FileList): Observable<boolean> {
-
     return this.http.post<boolean>(this.base + '/upload', files);
   }
+
   AddProject(project: Project): Observable<boolean> {
     return this.http.post<boolean>(this.base + '/newproject', project, httpOptions);
   }
+  
   EditProject(project: Project): Observable<boolean> {
     return this.http.post<boolean>(this.base + '/editproject/' + project.projectId, httpOptions);
   }
@@ -104,9 +115,9 @@ export class LoginService {
     return this.http.post<boolean>(this.base + '/newuser/', user, httpOptions);
   }
   EditUser(userId: number, user: User) {
-    return this.http.post<boolean>(this.base + '/edituser/' + userId, user, httpOptions);
+    return this.http.post<boolean>(this.base + '/edituser/' + localStorage.getItem("userId"), user, httpOptions);
   }
   RemoveUser(userId: number) {
-    return this.http.delete<boolean>(this.base + '/removeuser/' + userId, httpOptions)
+    return this.http.delete<boolean>(this.base + '/removeuser/' + localStorage.getItem("userId"), httpOptions)
   }
 }

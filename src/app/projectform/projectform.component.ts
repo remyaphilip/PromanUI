@@ -37,7 +37,7 @@ export class ProjectformComponent implements OnInit {
 
 
   addProject() {
-    if (this.project != null) {
+    if (this.project.projectId) {
       this.insertProject = this.form.value as Project;
       this.loginService.EditProject(this.project)
         .subscribe(response => {
@@ -46,7 +46,6 @@ export class ProjectformComponent implements OnInit {
         });
     }
     else {
-      console.log("inside project");
       this.insertProject = this.form.value;
       this.insertProject.organisation = this.loginService.organisation;
       console.log(this.insertProject);
@@ -58,7 +57,7 @@ export class ProjectformComponent implements OnInit {
   }
 
   removeProject() {
-    if (this.project != null) {
+    if (this.project.projectId) {
       this.loginService.RemoveProject(this.project.projectId).subscribe(response => {
         if (response == true) alert("Project deleted");
         this.sendEvent();
