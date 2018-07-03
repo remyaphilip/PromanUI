@@ -48,7 +48,6 @@ export class ProjectformComponent implements OnInit {
     else {
       this.insertProject = this.form.value;
       this.insertProject.organisation = this.loginService.organisation;
-      console.log(this.insertProject);
       this.loginService.AddProject(this.insertProject).subscribe(response => {
         if (response == true) alert("New project added");
         this.sendEvent();

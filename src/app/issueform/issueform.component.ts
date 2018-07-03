@@ -47,9 +47,7 @@ export class IssueformComponent implements OnInit {
   }
 
   getFormValue() {
-    console.log(this.projectList);
     if (this.issue != null) {
-      console.log('value');
       this.form.patchValue({
         projectName: this.projectList.find(p => p.projectId == this.issue.projectId).name,
         statusCode: this.issue.statusCode,
@@ -67,7 +65,6 @@ export class IssueformComponent implements OnInit {
 
   addIssue() {
     if (this.issue != null) {
-      console.log('test', this.issue);
       this.insertIssue = this.form.value as Issue;
       this.loginService.EditIssue(this.issue.issueId, this.issue.projectId, this.insertIssue)
         .subscribe(response => {
@@ -98,7 +95,6 @@ export class IssueformComponent implements OnInit {
     this.loginService.getProjectPerOrg(this.loginService.organisation)
       .subscribe(response => {
         this.projectList = <Project[]>response;
-        console.log(this.projectList);
       });
 
   }

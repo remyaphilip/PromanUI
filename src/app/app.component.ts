@@ -18,10 +18,9 @@ export class AppComponent implements OnInit {
    // this.loginService.login = true;
   }
 
-  loggedIn(): boolean {
-    return (this.loginService.userId != null);
+  loggedIn(){
+    return localStorage.getItem('loggedIn') == 'true'
   }
-
   
 
 }

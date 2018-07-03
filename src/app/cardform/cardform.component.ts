@@ -65,7 +65,6 @@ export class CardformComponent implements OnInit {
       });
     }
     else {
-      console.log(this.form.value as Card);
       this.card = this.form.value as Card;
       var temp =  this.form.get('listName').value;
       this.card.listId = this.lists.find(x => x.listName == temp).listId;

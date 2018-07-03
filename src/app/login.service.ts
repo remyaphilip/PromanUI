@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { User } from './interface/user';
 import { Project } from './interface/project';
 import { List } from './interface/list';
@@ -8,11 +8,13 @@ import { Issue } from './interface/issue';
 import { Card } from './interface/card';
 import { Observable } from 'rxjs/Observable';
 import { environment } from '../environments/environment';
+import { Credentials } from './interface/credentials';
+
+import { map } from 'rxjs/operators';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Access-Control-Allow-Origin': '*',
-    'Content-Type': 'application/json'
+
   })
 };
 
@@ -24,6 +26,7 @@ export class LoginService {
   organisation: string = "test";
   projectId: number;
   projectName: string;
+  authenticated = false;
   login: boolean;
   userList: User[];
 
@@ -32,12 +35,52 @@ export class LoginService {
   private project: Project[];
   constructor(private http: HttpClient) { }
 
-  getLogin(email: string, passwordHash: string): Observable<User> {
-    return this.http.get<User>(this.base + '/user/' + email + '/' + passwordHash);
+  // authenticate(credentials:Credentials,callback) {
+  //   const headers = new HttpHeaders(credentials ? {
+  //     authorization: 'Basic' + btoa(credentials.userName + ':' + credentials.password)
+  //   } : {});
+
+  //   this.http.get<User>(this.base + '/user', { headers: headers })
+  //     .subscribe(response => {
+  //       if ((response as User).userId) {
+  //         this.authenticated = true;
+  //       }
+  //       else {
+  //         this.authenticated = false;
+  //         alert("Invalid login");
+  //       }
+  //       return callback && callback();
+  //     });
+  // }
+
+  // getLogin(email: string, passwordHash: string): Observable < User > {
+  //   return this.http.get<User>(this.base + '/user/' + email + '/' + passwordHash);
+  // }
+
+  getLogin(user:User)  {
+    let formData: FormData = new FormData(); 
+    formData.append('username', user.email);
+    formData.append('password', user.passwordHash);
+    return this.http.post(this.base + '/login',formData)
+    .pipe(
+      map(response=>{
+        localStorage.setItem('loggedIn',"true");
+          return response;
+      }));
+  }
+
+  logOut(){
+    console.log("test");
+    return this.http.delete(this.base+'/logout').pipe(
+      map(response=>{
+        localStorage.setItem('loggedIn', "false");
+        return response;
+      })
+    );
   }
 
   getProjectPerOrg(organisation: string): Observable<Project[]> {
-    return this.http.get<Project[]>(this.base + '/project/' + "test");
+    return this.http.get<Project[]>(this.base + '/project/' + "test",{withCredentials:true} );
   }
 
   getAllUserPerProject(projectId: number): Observable<User[]> {
@@ -72,8 +115,8 @@ export class LoginService {
     return this.http.post<boolean>(this.base + '/editcard/' + card.listId + '/' + card.cardId, card, httpOptions)
   }
 
-  RemoveCard(cardId: number): Observable<boolean>{
-    return this.http.delete<boolean>(this.base + '/removecard/'+ cardId,httpOptions);
+  RemoveCard(cardId: number): Observable<boolean> {
+    return this.http.delete<boolean>(this.base + '/removecard/' + cardId, httpOptions);
   }
 
   getAllCardPerList(listId: number): Observable<Card[]> {
@@ -102,7 +145,7 @@ export class LoginService {
   AddProject(project: Project): Observable<boolean> {
     return this.http.post<boolean>(this.base + '/newproject', project, httpOptions);
   }
-  
+
   EditProject(project: Project): Observable<boolean> {
     return this.http.post<boolean>(this.base + '/editproject/' + project.projectId, httpOptions);
   }

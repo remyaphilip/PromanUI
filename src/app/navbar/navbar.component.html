@@ -4,10 +4,13 @@
 
   <span class="mat-button-wrapper">
     <div class="accountbox">
-      <button mat-button>
+      <button mat-button (click)="dropDown()">
         <mat-icon class="accounticon">account_circle</mat-icon>
         <span class="user"></span>
       </button>
     </div>
   </span>
 </mat-toolbar>
+<div class="dropdown" *ngIf = "dropdownEnabled">
+    <button (click) = "logOut()">Log out</button>
+</div>

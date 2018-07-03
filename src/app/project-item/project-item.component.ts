@@ -33,7 +33,6 @@ export class ProjectItemComponent implements OnInit {
 
   ngOnInit() {
     this.projectName = this.loginService.projectName;
-    console.log(this.projectName);
     this.getParams();
   }
   getParams() {
@@ -41,7 +40,6 @@ export class ProjectItemComponent implements OnInit {
       .subscribe(response => {
         this.temp1 = response;
         this.boardFlag = this.temp1;
-        console.log(this.boardFlag);
       });
 
   }
@@ -51,7 +49,6 @@ export class ProjectItemComponent implements OnInit {
   //   this.menuItem = 1;
   //   this.temp2 = this.loginService.getIssue(this.loginService.projectId).subscribe(response => {
   //     this.issue = <Issue[]>response;
-  //     // console.log(this.project.projectId, 'test', this.issue);
   //   })
   //   this.issueColumn = this.getIssueColumn();
 

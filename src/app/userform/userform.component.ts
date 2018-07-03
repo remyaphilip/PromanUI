@@ -50,7 +50,6 @@ export class UserformComponent implements OnInit {
       this.insertUser = this.form.value as User;
       this.loginService.EditUser(this.user.userId, this.insertUser)
         .subscribe(response => {
-          console.log('test');
           if (response == true) alert("Changes saved");
           this.sendEvent();
         });
@@ -67,9 +66,7 @@ export class UserformComponent implements OnInit {
 
   removeUser() {
     if (this.user != null) {
-      console.log('remove');
       this.loginService.RemoveUser(this.user.userId).subscribe(response => {
-        console.log(response);
       })
     }
   }

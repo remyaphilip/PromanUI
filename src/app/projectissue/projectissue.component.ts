@@ -73,7 +73,6 @@ export class ProjectissueComponent implements OnInit {
     this.loginService.getProjectPerOrg(this.loginService.organisation)
       .subscribe(response => {
         this.projectList = <Project[]>response;
-        console.log(this.projectList);
       });
 
   }
@@ -159,7 +158,6 @@ export class ProjectissueComponent implements OnInit {
   setOrder(value: string) {
     if (this.order === value) {
       // this.sortedCollection = this.orderPipe.transform(this.issue,'issue.issueId');
-      // console.log(this.sortedCollection);
       // this.cdr.markForCheck;
       this.reverse = !this.reverse;
     }
@@ -327,10 +325,8 @@ export class ProjectissueComponent implements OnInit {
   //     new Angular5Csv(this.issueCsv, 'IssueReport', this.options);
   //   }
   //   else if (this.exportList.length > 0) {
-  //     console.log('here');
   //     this.issue.forEach(x => {
   //       if (x.issueId in this.exportList) {
-  //         console.log('here2');
   //         this.issueCsv.push(
   //           {
   //             "issueId": x.issueId,
@@ -366,7 +362,6 @@ export class ProjectissueComponent implements OnInit {
   //     }
   //   } else if (event.target.checked) {
   //     this.exportList.push(issueId);
-  //     console.log(issueId);
   //   }
   //   else if (!event.target.checked) {
   //     if (this.checkAll) {
@@ -379,7 +374,6 @@ export class ProjectissueComponent implements OnInit {
   // setOrder(value: string) {
   //   if (this.order === value) {
   //     // this.sortedCollection = this.orderPipe.transform(this.issue,'issue.issueId');
-  //     // console.log(this.sortedCollection);
   //     // this.cdr.markForCheck;
   //     this.reverse = !this.reverse;
   //   }
@@ -391,11 +385,10 @@ export class ProjectissueComponent implements OnInit {
   //   //let formdata: FormData = new FormData();
   //   //for (let i = 0; i < files.length; i++)
   //   //formdata.append('fileList',files.item(i));
-  //   console.log("here")
+  
   //   this.loginService.UpLoadFile(files);
-  //  // console.log(formdata.getAll('fileList'));
+
   //   // for (let i = 0; i < files.length; i++)
-  //   //   console.log(files.item(i));
   //   //  this.issueService.uploadFiles(
   //   //    {
   //   //      files: files

@@ -72,7 +72,6 @@ export class IssueComponent implements OnInit {
     this.loginService.getProjectPerOrg(this.loginService.organisation)
       .subscribe(response => {
         this.projectList = <Project[]>response;
-        console.log(this.projectList);
       });
 
   }
@@ -158,7 +157,6 @@ export class IssueComponent implements OnInit {
   setOrder(value: string) {
     if (this.order === value) {
       // this.sortedCollection = this.orderPipe.transform(this.issue,'issue.issueId');
-      // console.log(this.sortedCollection);
       // this.cdr.markForCheck;
       this.reverse = !this.reverse;
     }

@@ -48,7 +48,6 @@ export class BoardComponent implements OnInit {
   getlist() {
     this.loginService.getlist(this.loginService.projectId).subscribe(response => {
       this.lists = <List[]>response;
-      console.log(this.lists);
       // this.lists.forEach(list =>
       //   list.card.forEach(element => {
       //     element.listId = list.listId;

@@ -39,6 +39,7 @@ import { UserformComponent } from './userform/userform.component';
 import { ProjectformComponent } from './projectform/projectform.component';
 import { IssueformComponent } from './issueform/issueform.component';
 import { CardformComponent } from './cardform/cardform.component';
+import { LogoutComponent } from './logout/logout.component';
 
 
 
@@ -63,7 +64,8 @@ import { CardformComponent } from './cardform/cardform.component';
     UserformComponent,
     ProjectformComponent,
     IssueformComponent,
-    CardformComponent
+    CardformComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -84,6 +86,7 @@ import { CardformComponent } from './cardform/cardform.component';
     OrderModule,
     RouterModule.forRoot([ 
 
+      { path: 'app',component:AppComponent},
       { path: 'home', component: HomeComponent },
       { path: 'project', component: ProjectComponent },
       { path: 'user', component: UserComponent },

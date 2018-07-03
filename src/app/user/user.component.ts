@@ -19,11 +19,10 @@ export class UserComponent implements OnInit {
     this.getAllUsers();
   }
   getAllUsers() {
-    console.log(this.loginService.organisation);
+    
     this.loginService.GetAllUsers(this.loginService.organisation)
       .subscribe(response => {
         this.userList = response as User[];
-        console.log(this.userList);
       });
   }
   setUserFlagAddUser(user?: User) {
@@ -31,7 +30,6 @@ export class UserComponent implements OnInit {
     this.setUserForm(true);
     if (user){
       this.user = user;
-      console.log(user);
     }else
     this.user=null;
   }
