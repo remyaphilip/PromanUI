@@ -98,7 +98,7 @@ import { LogoutComponent } from './logout/logout.component';
      // { path: 'issue/:userId', loadChildren: './issue/issue.module#IssueModule' },
       { path: 'issue/:userId', component: IssueComponent },
       { path: 'login', component: LoginComponent },
-       { path: '**', component: NotfoundComponent }
+       { path: '**', component: LoginComponent }
     ])
   ],
   providers: [LoginService],
