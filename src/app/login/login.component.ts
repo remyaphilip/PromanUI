@@ -53,8 +53,9 @@ export class LoginComponent implements OnInit {
     this.user.email = email;
     this.user.passwordHash = passwordHash;
     this.loginService.getLogin(this.user)
-      .subscribe((response: string) => {
-        // this.getAllUsers();
+      .subscribe((response) => {
+          console.log(response);
+         this.getAllUsers();
         this.loginService.login = false;
        this.router.navigate(['project']);
       });
@@ -65,9 +66,11 @@ export class LoginComponent implements OnInit {
   }
 
   getAllUsers() {
-    this.temp = this.loginService.GetAllUsers(this.loginService.organisation)
+    console.log("login");
+    this.loginService.GetAllUsers()
       .subscribe(response => {
         this.loginService.userList = response as User[];
+        console.log(this.loginService.userList);
       });
   }
 }

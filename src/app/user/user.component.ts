@@ -20,7 +20,7 @@ export class UserComponent implements OnInit {
   }
   getAllUsers() {
     
-    this.loginService.GetAllUsers(this.loginService.organisation)
+    this.loginService.GetAllUsers()
       .subscribe(response => {
         this.userList = response as User[];
       });

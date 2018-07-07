@@ -14,6 +14,9 @@ import { map } from 'rxjs/operators';
 
 const httpOptions = {
   headers: new HttpHeaders({
+    
+    // 'Content-Type': 'application/json',
+    // "Access-Control-Allow-Origin": "*"
 
   })
 };
@@ -26,7 +29,6 @@ export class LoginService {
   organisation: string = "test";
   projectId: number;
   projectName: string;
-  authenticated = false;
   login: boolean;
   userList: User[];
 
@@ -35,23 +37,6 @@ export class LoginService {
   private project: Project[];
   constructor(private http: HttpClient) { }
 
-  // authenticate(credentials:Credentials,callback) {
-  //   const headers = new HttpHeaders(credentials ? {
-  //     authorization: 'Basic' + btoa(credentials.userName + ':' + credentials.password)
-  //   } : {});
-
-  //   this.http.get<User>(this.base + '/user', { headers: headers })
-  //     .subscribe(response => {
-  //       if ((response as User).userId) {
-  //         this.authenticated = true;
-  //       }
-  //       else {
-  //         this.authenticated = false;
-  //         alert("Invalid login");
-  //       }
-  //       return callback && callback();
-  //     });
-  // }
 
   // getLogin(email: string, passwordHash: string): Observable < User > {
   //   return this.http.get<User>(this.base + '/user/' + email + '/' + passwordHash);
@@ -61,9 +46,10 @@ export class LoginService {
     let formData: FormData = new FormData(); 
     formData.append('username', user.email);
     formData.append('password', user.passwordHash);
-    return this.http.post(this.base + '/login',formData)
+    return this.http.post(this.base + '/login',formData,{observe:'response'})
     .pipe(
       map(response=>{
+        console.log(response);
         localStorage.setItem('loggedIn',"true");
           return response;
       }));
@@ -134,8 +120,8 @@ export class LoginService {
   RemoveIssue(issueId: number): Observable<boolean> {
     return this.http.delete<boolean>(this.base + '/delete/' + issueId, httpOptions);
   }
-  GetAllUsers(organisation: string) {
-    return this.http.get<User[]>(this.base + '/usersperorg/' + organisation);
+  GetAllUsers() {
+    return this.http.get<User[]>(this.base + '/peers',{withCredentials:true});
   }
 
   UpLoadFile(files: FileList): Observable<boolean> {

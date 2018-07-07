@@ -4,6 +4,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -40,6 +41,11 @@ import { ProjectformComponent } from './projectform/projectform.component';
 import { IssueformComponent } from './issueform/issueform.component';
 import { CardformComponent } from './cardform/cardform.component';
 import { LogoutComponent } from './logout/logout.component';
+import { AuthguardService } from './authguard.service';
+import { ErrorhandlerService } from './errorhandler.service';
+import { RequestinterceptorService } from './requestinterceptor.service';
+import { AuthService } from './auth.service';
+import { audit } from 'rxjs/operators';
 
 
 
@@ -47,7 +53,6 @@ import { LogoutComponent } from './logout/logout.component';
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent,
     NavbarComponent,
     HeaderComponent,
     FooterComponent,
@@ -71,6 +76,7 @@ import { LogoutComponent } from './logout/logout.component';
     BrowserModule,
     BrowserAnimationsModule,
     NoopAnimationsModule,
+    HttpModule,
     HttpClientModule,
     FormsModule,
     MatMenuModule,
@@ -84,24 +90,27 @@ import { LogoutComponent } from './logout/logout.component';
     FormsModule,
     ReactiveFormsModule,
     OrderModule,
-    RouterModule.forRoot([ 
+    RouterModule.forRoot([
 
-      { path: 'app',component:AppComponent},
-      { path: 'home', component: HomeComponent },
-      { path: 'project', component: ProjectComponent },
-      { path: 'user', component: UserComponent },
-      { path: 'board', component: BoardComponent },
-      { path: 'projectitem/:flag', component: ProjectItemComponent },
+      { path: 'app', component: AppComponent },
+      { path: 'project', component: ProjectComponent,canActivate:[AuthguardService] },
+      { path: 'user', component: UserComponent,canActivate:[AuthguardService] },
+      { path: 'board', component: BoardComponent,canActivate:[AuthguardService] },
+      { path: 'projectitem/:flag', component: ProjectItemComponent,canActivate:[AuthguardService] },
       //{ path: 'projectitem/:flag', loadChildren: './project-item/project-item.module#ProjectitemModule' },
-      { path: 'issueform', component: IssueformComponent },
-     //  { path: 'issue', component: IssueComponent },
-     // { path: 'issue/:userId', loadChildren: './issue/issue.module#IssueModule' },
-      { path: 'issue/:userId', component: IssueComponent },
+      { path: 'issueform', component: IssueformComponent,canActivate:[AuthguardService] },
+      //  { path: 'issue', component: IssueComponent },
+      // { path: 'issue/:userId', loadChildren: './issue/issue.module#IssueModule' },
+      { path: 'issue/:userId', component: IssueComponent,canActivate:[AuthguardService] },
       { path: 'login', component: LoginComponent },
-       { path: '**', component: LoginComponent }
+      { path: '**', component: LoginComponent }
     ])
   ],
-  providers: [LoginService],
+  providers: [LoginService,
+    AuthguardService,
+    AuthService,
+    RequestinterceptorService,
+    ErrorhandlerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
