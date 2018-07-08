@@ -46,7 +46,7 @@ export class LoginService {
     let formData: FormData = new FormData(); 
     formData.append('username', user.email);
     formData.append('password', user.passwordHash);
-    return this.http.post(this.base + '/login',formData,{observe:'response'})
+    return this.http.post(this.base + '/login',formData,{withCredentials:true})
     .pipe(
       map(response=>{
         console.log(response);
@@ -57,7 +57,7 @@ export class LoginService {
 
   logOut(){
     console.log("test");
-    return this.http.delete(this.base+'/logout').pipe(
+    return this.http.delete(this.base+'/logout',{withCredentials:true}).pipe(
       map(response=>{
         localStorage.setItem('loggedIn', "false");
         return response;
@@ -74,7 +74,7 @@ export class LoginService {
   }
 
   getBoard(projectId: number): Observable<Board> {
-    return this.http.get<Board>(this.base + '/board/' + projectId);
+    return this.http.get<Board>(this.base + '/board/' + projectId,{withCredentials:true});
   }
 
   getList(boardId: number) {
@@ -110,7 +110,7 @@ export class LoginService {
   }
 
   AddIssue(projectId: number, issue: Issue): Observable<boolean> {
-    return this.http.post<boolean>(this.base + '/issue/' + projectId, issue, httpOptions);
+    return this.http.post<boolean>(this.base + '/issue/' + projectId, issue);
   }
 
   EditIssue(issueId: number, projectId: number, issue: Issue): Observable<boolean> {
