@@ -52,7 +52,7 @@ export class IssueComponent implements OnInit {
   }
 
   getAllIssuePerUser() {
-    this.loginService.getAllIssuePerUser(this.loginService.userId).subscribe(response => {
+    this.loginService.getAllIssuePerUser().subscribe(response => {
       this.issueList = response as Issue[];
       this.cdr.markForCheck();
     })

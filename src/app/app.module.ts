@@ -101,7 +101,7 @@ import { audit } from 'rxjs/operators';
       { path: 'issueform', component: IssueformComponent,canActivate:[AuthguardService] },
       //  { path: 'issue', component: IssueComponent },
       // { path: 'issue/:userId', loadChildren: './issue/issue.module#IssueModule' },
-      { path: 'issue/:userId', component: IssueComponent,canActivate:[AuthguardService] },
+      { path: 'issue', component: IssueComponent,canActivate:[AuthguardService] },
       { path: 'login', component: LoginComponent },
       { path: '**', component: LoginComponent }
     ])

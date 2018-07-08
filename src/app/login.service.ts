@@ -70,83 +70,84 @@ export class LoginService {
   }
 
   getAllUserPerProject(projectId: number): Observable<User[]> {
-    return this.http.get<User[]>(this.base + '/projectuser/' + projectId);
+    return this.http.get<User[]>(this.base + '/projectuser/' + projectId,{withCredentials:true});
   }
+  //   /project/{id}/users
 
   getBoard(projectId: number): Observable<Board> {
     return this.http.get<Board>(this.base + '/board/' + projectId,{withCredentials:true});
   }
 
   getList(boardId: number) {
-    return this.http.get<List[]>(this.base + '/board/' + boardId + '/list');
+    return this.http.get<List[]>(this.base + '/board/' + boardId + '/list',{withCredentials:true});
   }
 
   getlist(projectId: number) {
-    return this.http.get<List[]>(this.base + '/projectId/' + projectId);
+    return this.http.get<List[]>(this.base + '/projectId/' + projectId,{withCredentials:true});
   }
 
   getIssue(projectId: number) {
-    return this.http.get<Issue[]>(this.base + '/project/' + projectId + '/issues');
+    return this.http.get<Issue[]>(this.base + '/project/' + projectId + '/issues',{withCredentials:true});
   }
 
-  getAllIssuePerUser(userId: number) {
-    return this.http.get<Issue[]>(this.base + '/issue/' + localStorage.getItem("userId"));
+  getAllIssuePerUser() {
+    return this.http.get<Issue[]>(this.base + '/issue/',{withCredentials:true});
   }
 
   AddCard(listId: number, card: Card): Observable<boolean> {
-    return this.http.post<boolean>(this.base + '/card/' + listId, card, httpOptions);
+    return this.http.post<boolean>(this.base + '/card/' + listId, card, {withCredentials:true});
   }
 
   EditCard(card: Card): Observable<boolean> {
-    return this.http.post<boolean>(this.base + '/editcard/' + card.listId + '/' + card.cardId, card, httpOptions)
+    return this.http.post<boolean>(this.base + '/editcard/' + card.listId + '/' + card.cardId, card, {withCredentials:true})
   }
 
   RemoveCard(cardId: number): Observable<boolean> {
-    return this.http.delete<boolean>(this.base + '/removecard/' + cardId, httpOptions);
+    return this.http.delete<boolean>(this.base + '/removecard/' + cardId,{withCredentials:true});
   }
 
   getAllCardPerList(listId: number): Observable<Card[]> {
-    return this.http.get<Card[]>(this.base + '/getallcard/' + listId);
+    return this.http.get<Card[]>(this.base + '/getallcard/' + listId,{withCredentials:true});
   }
 
   AddIssue(projectId: number, issue: Issue): Observable<boolean> {
-    return this.http.post<boolean>(this.base + '/issue/' + projectId, issue);
+    return this.http.post<boolean>(this.base + '/issue/' + projectId, issue,{withCredentials:true});
   }
 
   EditIssue(issueId: number, projectId: number, issue: Issue): Observable<boolean> {
-    return this.http.post<boolean>(this.base + '/editissue/' + issueId + '/' + projectId, issue, httpOptions);
+    return this.http.post<boolean>(this.base + '/editissue/' + issueId + '/' + projectId, issue, {withCredentials:true});
   }
 
   RemoveIssue(issueId: number): Observable<boolean> {
-    return this.http.delete<boolean>(this.base + '/delete/' + issueId, httpOptions);
+    return this.http.delete<boolean>(this.base + '/delete/' + issueId, {withCredentials:true});
   }
   GetAllUsers() {
     return this.http.get<User[]>(this.base + '/peers',{withCredentials:true});
   }
 
   UpLoadFile(files: FileList): Observable<boolean> {
-    return this.http.post<boolean>(this.base + '/upload', files);
+    return this.http.post<boolean>(this.base + '/upload', files,{withCredentials:true});
   }
 
   AddProject(project: Project): Observable<boolean> {
-    return this.http.post<boolean>(this.base + '/newproject', project, httpOptions);
+    return this.http.post<boolean>(this.base + '/newproject', project, {withCredentials:true});
   }
 
   EditProject(project: Project): Observable<boolean> {
-    return this.http.post<boolean>(this.base + '/editproject/' + project.projectId, httpOptions);
+    return this.http.post<boolean>(this.base + '/editproject/' + project.projectId, {withCredentials:true});
   }
 
   RemoveProject(projectId: number): Observable<boolean> {
-    return this.http.delete<boolean>(this.base + '/removeproject/' + projectId, httpOptions);
+    return this.http.delete<boolean>(this.base + '/removeproject/' + projectId, {withCredentials:true});
   }
 
   AddUser(user: User) {
-    return this.http.post<boolean>(this.base + '/newuser/', user, httpOptions);
+    return this.http.post<boolean>(this.base + '/newuser/', user, {withCredentials:true});
   }
   EditUser(userId: number, user: User) {
-    return this.http.post<boolean>(this.base + '/edituser/' + localStorage.getItem("userId"), user, httpOptions);
+    return this.http.post<boolean>(this.base + '/edituser/' + localStorage.getItem("userId"), user, {withCredentials:true});
   }
   RemoveUser(userId: number) {
-    return this.http.delete<boolean>(this.base + '/removeuser/' + localStorage.getItem("userId"), httpOptions)
+    return this.http.delete<boolean>(this.base + '/removeuser/' + localStorage.getItem("userId"), {withCredentials:true})
   }
 }

@@ -22,7 +22,7 @@ export class ProjectComponent {
   dropDown: boolean[] = [];
   sIndex: number;
   projectForm: boolean = false;
-  project: Project;
+  project: Project = {} as Project;
 
   constructor(private router: Router, private loginService: LoginService) {
 
