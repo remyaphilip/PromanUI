@@ -1,4 +1,4 @@
-    <a frameborder="0" data-theme="dark" data-layers="1,2,3,4" data-stack-embed="true" href="https://embed.stackshare.io/stacks/embed/4a199ac8f810dd9ce84b0cc0a170aa"/></a>    <script async src="https://cdn1.stackshare.io/javascripts/client-code.js" charset="utf-8"></script>
+
 # PromanUi
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.1.
