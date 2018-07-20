@@ -5,6 +5,7 @@
 
 Project management application - Frontend
 o	Features
+
   	Create and manage project development 
   
 		Create and manage issues reported in project
