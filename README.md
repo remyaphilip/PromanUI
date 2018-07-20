@@ -13,7 +13,7 @@ o	Features
 
 o	Future modifications: 
 
-	Reframe frontend using bootstrap 4
+	Reframe frontend using bootstrap 
 
 	Add more nice to have functionalities
    
